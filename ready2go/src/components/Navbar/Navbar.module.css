@@ -1,0 +1,58 @@
+body {
+    background-color: #FFF5E1;
+}
+.navbar-container {
+  width: 100%;
+  padding-left: 8%;
+  padding-right: 8%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+
+.navbar, .navbox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+.logo {
+  height: 5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  cursor: pointer;
+}
+
+nav {
+  flex: 1; /*The flex: 1 property is used to distribute free space on a flex container among its flex items. It is a shorthand property that sets three individual properties: flex-grow, flex-shrink, and flex-basis.
+    When used alone, flex: 1 is equivalent to flex-grow: 1; flex-shrink: 1; flex-basis: 0%;, which means that the item will grow or shrink equally with other flex items in the container, and its initial size will be 0%. This property is commonly used to make a flex item fill the remaining space in the container.*/
+  text-align: right;
+}
+nav ul li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 50px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 13px;
+}
+.nav-btn {
+  border-radius: 60px;
+  border: 1px solid transparent;
+  padding: 10px 30px;
+  font-size: 0.80em;
+  background-color: #F2D9C8;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: black;
+  margin: 0;
+  height: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
