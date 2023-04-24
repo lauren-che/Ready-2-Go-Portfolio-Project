@@ -1,17 +1,18 @@
-// import { useState } from 'react'
-
+import { useState } from 'react';
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
-import Hero from './components/Hero/Hero';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Services from './components/Services';
+import Testimonials from './components/Testimonials';
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
-    <>
+    <div>
       <Navbar />
       <Hero />
-    </>
+      {/* <Services /> */}
+      {/* <Testimonials /> */}
+    </div>
   );
 }
 
