@@ -10,3 +10,8 @@ html {
 body {
     @apply box-border bg-[#FFF5E1] text-[#232323]
 }
+@layer base {
+  h4 {
+    @apply mt-16;
+  }
+}  
