@@ -5,13 +5,19 @@
 @tailwind utilities;
 
 html {
-    @apply font-Poppins scroll-smooth;
+  @apply font-Poppins scroll-smooth;
 }
 body {
-    @apply box-border bg-[#FFF5E1] text-[#232323]
+  @apply box-border bg-[#FFF5E1] text-[#232323];
 }
 @layer base {
   h4 {
     @apply mt-16;
   }
-}  
+  h5 {
+    @apply xl:mt-56 lg:mt-20 mt-40;
+  }
+  img {
+    @apply flex;
+  }
+}

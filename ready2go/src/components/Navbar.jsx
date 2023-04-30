@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import logo from '../assets/logo.svg';
+import lightlogo from '../assets/lightlogo.svg';
 import menu from '../assets/menu.png';
 // run npm i --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome  in order to import FontAwesomeIcons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -22,7 +23,7 @@ export const Navbar = () => {
   return (
     <nav
       className={`fixed w-full left-0 top-0 z-[999] ${
-        sticky ? 'md:bg-[#232323]/60 text-gray-900' : 'text-white'
+        sticky ? 'md:bg-[#232323]/100 text-gray-900' : 'text-white'
       }`}
     >
       <div className="flex items-center justify-between">
@@ -33,6 +34,7 @@ export const Navbar = () => {
           className={` ${
             sticky ? 'md:bg-[#232323]/0 bg-[#232323]' : 'bg-[#232323]'
           } text-gray-900 lg:block hidden px-7 py-7 font-medium rounded-bl-full`}
+          // className='bg-[#232323] lg:block hidden px-7 py-7 font-medium rounded-bl-full'
         >
           <ul className="flex items-center gap-1 py-2 text-sm">
             {menuLinks?.map((menu, i) => (

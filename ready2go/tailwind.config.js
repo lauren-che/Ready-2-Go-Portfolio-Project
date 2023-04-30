@@ -7,9 +7,14 @@ export default {
         Poppins: 'Poppins',
       },
       fontSize: {
-        '7xl': '65px',
+        '7xl': '64px',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    
+  ],
+  
 };
+
+

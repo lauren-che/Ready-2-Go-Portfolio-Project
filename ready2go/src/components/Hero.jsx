@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex py-10 md:flex-row flex-col items-center lg:pl-8"
+      className="flex md:pt-36 md:flex-row flex-col justify-items-center lg:pl-8 md:pb-28"
     >
       <div className="flex-1 xl:ml-4 md:ml-8 md:mt-0 md:mr-0 md:mb-0 mx-8">
         <div>
@@ -79,7 +79,7 @@ const Hero = () => {
           </a>
         </div>
       </div>
-      <div className="flex-1 flex items-center justify-center h-full mr-16 md:mr-12 mr-8 mt-10 order-first md:order-last">
+      <div className="flex-1 flex items-center justify-center h-full mr-16 md:mr-12 mr-8 md:mt-10 mt-20 order-first md:order-last">
         <img
           src={hero}
           alt="van driver"
