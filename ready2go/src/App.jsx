@@ -3,17 +3,23 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import HomeServices from './components/HomeServices';
-import Services from './components/Services';
+import Benefits from './components/Benefits';
 import Testimonials from './components/Testimonials';
+import About from './components/About';
+import Services from './components/Services';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <Hero />
       <HomeServices />
+      <Benefits />
+      <Testimonials />
+      <About />
       {/* <Services /> */}
-      {/* <Testimonials /> */}
+      <Footer />
     </div>
   );
 }

@@ -22,7 +22,7 @@ const HomeServices = () => {
                   src={rides}
                   alt="on-demand rides image"
                 />
-                <p className="xl:text-2xl lg:text-lg text-xs xl:w-56 lg:w-48 md:w-32 w-42 py-2">
+                <p className="xl:text-xl lg:text-lg text-xs xl:w-56 lg:w-48 md:w-32 w-42 py-2">
                   On-Demand Rides Across Cleveland
                 </p>
               </div>
@@ -32,7 +32,7 @@ const HomeServices = () => {
                   src={safe}
                   alt="safe rides image"
                 />
-                <p className="xl:text-2xl lg:text-lg text-xs xl:w-56 lg:w-48 md:w-32 w-42 py-2">
+                <p className="xl:text-xl lg:text-lg text-xs xl:w-42 lg:w-48 md:w-32 w-42 py-2">
                   Safe & Reliable Drivers
                 </p>
               </div>
@@ -42,8 +42,8 @@ const HomeServices = () => {
                   src={car}
                   alt="car image"
                 />
-                <p className="xl:text-2xl lg:text-lg text-xs xl:w-64 md:w-32 w-28 md:w-42 py-2">
-                  Wheelchair Accessibility Options
+                <p className="xl:text-xl lg:text-lg text-xs xl:w-64 md:w-32 w-28 md:w-42 py-2">
+                  Wheelchair Accessibile Rides
                 </p>
               </div>
               <div className="w-1/2 grid place-items-center md:basis-1/4">
@@ -52,7 +52,7 @@ const HomeServices = () => {
                   src={pricing}
                   alt="pricing image"
                 />
-                <p className="xl:text-2xl lg:text-lg text-xs xl:w-64 lg:w-48 w-32 py-2">
+                <p className="xl:text-xl lg:text-lg text-xs xl:w-64 lg:w-48 w-32 py-2">
                   Transparent Fees. Insurance Accepted.
                 </p>
               </div>

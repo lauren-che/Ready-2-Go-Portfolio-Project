@@ -4,17 +4,16 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        Poppins: 'Poppins',
+      Poppins: ['Poppins', 'sans-serif'],
+        Lato: 'Lato',
+        ClashGroteskSemibold: ['ClashGroteskSemibold', 'bold'],
       },
       fontSize: {
         '7xl': '64px',
       },
     },
   },
-  plugins: [
-    
-  ],
-  
+  plugins: [],
 };
 
 

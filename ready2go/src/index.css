@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -20,4 +22,20 @@ body {
   img {
     @apply flex;
   }
+}
+@font-face {
+  font-family: 'ClashGroteskBold';
+  src: local('ClashGroteskBold'),
+    url('../fonts/ClashGrotesk-Bold.ttf') format('truetype');
+  font-weight: bold;
+
+  font-family: 'ClashGroteskRegular';
+  src: local('ClashGroteskRegular'),
+    url('../fonts/ClashGrotesk-Regular.ttf') format('truetype');
+  font-weight: normal;
+
+  font-family: 'ClashGroteskSemibold';
+  src: local('ClashGroteskSemibold'),
+    url('../fonts/ClashGrotesk-Semibold.ttf') format('truetype');
+  font-weight: semi-bold;
 }
