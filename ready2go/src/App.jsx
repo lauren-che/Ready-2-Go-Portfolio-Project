@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
+import Nav from './components/Nav';
 import Hero from './components/Hero';
 import HomeServices from './components/HomeServices';
 import Benefits from './components/Benefits';
@@ -11,16 +10,16 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div>
-      {/* <Navbar /> */}
-      <Hero />
-      <HomeServices />
-      <Benefits />
-      <Testimonials />
-      <About />
-      {/* <Services /> */}
-      <Footer />
-    </div>
+      <div>
+        <Nav />
+        <Hero />
+        <HomeServices />
+        <Benefits />
+        <Testimonials />
+        <About />
+        {/* <Services /> */}
+        <Footer />
+      </div>
   );
 }
 

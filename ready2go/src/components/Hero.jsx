@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="flex md:pt-36 md:flex-row flex-col justify-items-center lg:pl-8 md:pb-28"
+      className="flex md:pt-24 md:flex-row flex-col justify-items-center lg:pl-8 md:pb-28"
     >
       <div className="flex-1 xl:ml-4 md:ml-8 md:mt-0 md:mr-0 md:mb-0 mx-8">
         <div>
@@ -20,14 +20,17 @@ const Hero = () => {
               className="lg:h-5 h-3 inline pl-2"
               src={arrow}
               alt="arrow image"
-            />
+            />{' '}
+            <br />
             how you commute around the city
           </h1>
         </div>
         <div>
-          <p className="xl:text-xl xl:pt-5 md:pt-3 py-2 md:font-bold text-sm w-5/6">
+          <p className="md:text-xl xl:pt-5 md:pt-3 py-2 text-sm w-5/6 text-gray-600">
             Bringing safe, reliable, and affordable rides right to your
-            doorstep.
+            doorstep. If you need a ride to an appointment, an event or to a
+            local store then book your ride today with our safe and friendly
+            team.
           </p>
         </div>
         <div className="md:mt-2 my-2">
@@ -79,11 +82,11 @@ const Hero = () => {
           </a>
         </div>
       </div>
-      <div className="flex-1 flex items-center justify-center h-full mr-16 md:mr-12 mr-8 md:mt-10 mt-20 order-first md:order-last">
+      <div className="flex-1 flex items-center justify-center h-full mr-16 md:mr-12 mr-8 md:mt-10 mt-8 order-first md:order-last">
         <img
           src={hero}
           alt="van driver"
-          className="md:w-12/12 h-full md:object-cover"
+          className="md:w-12/12 h-full md:object-cover object-top"
         />
       </div>
     </section>

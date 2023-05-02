@@ -21,7 +21,7 @@ const Testimonials = () => {
   ];
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   return (
-    <section className="bg-[#232323] py-14">
+    <section id='testimonials' className="bg-[#232323] py-14">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <h3 className="text-[#FF6602] font-semibold pb-6 md:text-4xl">

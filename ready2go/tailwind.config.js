@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-      Poppins: ['Poppins', 'sans-serif'],
+        Poppins: ['Poppins', 'sans-serif'],
         Lato: 'Lato',
         ClashGroteskSemibold: ['ClashGroteskSemibold', 'bold'],
       },
@@ -15,5 +15,3 @@ export default {
   },
   plugins: [],
 };
-
-

@@ -4,7 +4,7 @@ import about from '../assets/about.png';
 export const About = () => {
   return (
     <div>
-      <section className="text-gray-600 body-font">
+      <section id="about" className="text-gray-600 body-font">
         <div className="container mx-auto flex px-8 py-28 md:flex-row flex-col lg:items-center">
           <div className="md:flex-grow lg:w-2/3 md:w-1/2 lg:pr-24 lg:pr-16 flex flex-col md:items-start md:text-left lg:mb-16 md:mb-0 items-center text-center">
             <h2 className="text-base text-[#FF6602] pb-2 font-semibold leading-7 uppercase tracking-widest">
