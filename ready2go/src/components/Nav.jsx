@@ -11,7 +11,7 @@ const Nav = () => {
       <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
           <a href="javascript:void(0)">
-            <img src={logo} className="h-16 pl-6" alt="Ready 2 Go Logo" />
+            <img src={logo} className="h-16 lg:pl-6" alt="Ready 2 Go Logo" />
           </a>
           <div className="md:hidden">
             <button

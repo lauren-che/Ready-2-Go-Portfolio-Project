@@ -13,11 +13,11 @@ const Hero = () => {
             cleveland&apos;s trusted transportation provider
           </h4>
         </div>
-        <div className="xl:text-7xl lg:text-5xl text-4xl leading-tight">
+        <div className="xl:text-6xl lg:text-5xl text-4xl leading-tight">
           <h1>
             Revolutionize
             <img
-              className="lg:h-5 h-3 inline pl-2"
+              className="lg:h-4 h-3 inline pl-4"
               src={arrow}
               alt="arrow image"
             />{' '}
@@ -26,7 +26,7 @@ const Hero = () => {
           </h1>
         </div>
         <div>
-          <p className="md:text-xl xl:pt-5 md:pt-3 py-2 text-sm w-5/6 text-gray-600">
+          <p className="md:text-lg xl:pt-5 md:pt-3 py-2 text-sm w-5/6 text-gray-600">
             Bringing safe, reliable, and affordable rides right to your
             doorstep. If you need a ride to an appointment, an event or to a
             local store then book your ride today with our safe and friendly
@@ -36,7 +36,7 @@ const Hero = () => {
         <div className="md:mt-2 my-2">
           <a
             href="#_"
-            className="md:mr-2 my-2 relative inline-flex items-center xl:px-12 md:px-5 px-28 xl:py-3 py-2 overflow-hidden text-lg font-medium text-white border-2 bg-[#FF6602] border-[#FF6602] rounded-full hover:text-white group hover:bg-[#FF6602] hover:border-[#232323]"
+            className="md:mr-2 my-2 relative inline-flex items-center lg:px-12 md:px-5 px-28 md:py-3 py-2 overflow-hidden text-lg font-medium text-white border-2 bg-[#FF6602] border-[#FF6602] rounded-full hover:text-white group hover:bg-[#FF6602] hover:border-[#232323]"
           >
             <span className="absolute left-0 block w-full h-0 transition-all bg-[#232323] opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
             <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
@@ -59,7 +59,7 @@ const Hero = () => {
           </a>
           <a
             href="#services"
-            className="relative inline-flex items-center xl:px-12 md:px-5 px-28 xl:py-3 py-2 overflow-hidden text-lg font-medium text-[#232323] border-2 border-[#232323] rounded-full hover:text-white group hover:bg-[#232323]"
+            className="relative inline-flex items-center lg:px-12 md:px-5 px-28 md:py-3 py-2 overflow-hidden text-lg font-medium text-[#232323] border-2 border-[#232323] rounded-full hover:text-white group hover:bg-[#232323]"
           >
             <span className="absolute left-0 block w-full h-0 transition-all bg-[#232323] opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
             <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
