@@ -1,5 +1,5 @@
-import hero from '../assets/hero.png';
-import arrow from '../assets/arrow.svg';
+import hero from '../../assets/hero.png';
+import arrow from '../../assets/arrow.svg';
 
 const Hero = () => {
   return (

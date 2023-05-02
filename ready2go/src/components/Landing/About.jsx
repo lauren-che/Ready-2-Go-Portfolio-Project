@@ -1,5 +1,5 @@
-import commitment from '../assets/commitment.svg';
-import about from '../assets/about.png';
+import commitment from '../../assets/commitment.svg';
+import about from '../../assets/about.png';
 
 export const About = () => {
   return (

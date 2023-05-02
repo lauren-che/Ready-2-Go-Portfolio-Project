@@ -1,9 +1,9 @@
 import Nav from '../components/Nav';
-import Hero from '../components/Hero';
-import HomeServices from '../components/HomeServices';
-import Benefits from '../components/Benefits';
-import Testimonials from '../components/Testimonials';
-import About from '../components/About';
+import Hero from '../components/Landing/Hero';
+import HomeServices from '../components/Landing/HomeServices';
+import Benefits from '../components/Landing/Benefits';
+import Testimonials from '../components/Landing/Testimonials';
+import About from '../components/Landing/About';
 import Footer from '../components/Footer';
 
 export default function Landing() {

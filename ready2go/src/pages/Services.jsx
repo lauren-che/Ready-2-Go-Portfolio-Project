@@ -1,12 +1,12 @@
-import React from 'react';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
+import ServiceHeader from '../components/Services/ServiceHeader';
 
 export default function Services() {
   return (
     <div>
       <Nav />
-      <h1>I am services page</h1>
+      <ServiceHeader />
       <Footer />
     </div>
   )
