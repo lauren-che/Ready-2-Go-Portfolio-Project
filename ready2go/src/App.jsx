@@ -7,9 +7,11 @@ import Testimonials from './components/Testimonials';
 import About from './components/About';
 import Services from './components/Services';
 import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
+    <Router>
       <div>
         <Nav />
         <Hero />
@@ -17,9 +19,14 @@ function App() {
         <Benefits />
         <Testimonials />
         <About />
-        {/* <Services /> */}
+        <Services />
         <Footer />
       </div>
+      <Routes>
+        <Route path="/services" element={<Services />} />
+        <Route path="/services/#faq" element={<Services />} />
+      </Routes>
+    </Router>
   );
 }
 

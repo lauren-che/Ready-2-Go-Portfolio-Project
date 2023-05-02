@@ -10,7 +10,7 @@ const Nav = () => {
     <nav className="bg-[#232323] drop-shadow-lg border-b w-full md:static md:text-sm md:border-none">
       <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
-          <a href="javascript:void(0)">
+          <a href="#">
             <img src={logo} className="h-16 lg:pl-6" alt="Ready 2 Go Logo" />
           </a>
           <div className="md:hidden">
@@ -55,7 +55,7 @@ const Nav = () => {
             state ? 'block' : 'hidden'
           }`}
         >
-          <ul className="text-[#FFF5E1] justify-end items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
+          <ul className="text-[#FFF5E1] justify-end items-center space-y-6 md:flex md:space-x-8 md:space-y-0">
             <li className="hover:text-[#FF6602] cursor-pointer">
               <Link to="/services">Services</Link>
             </li>

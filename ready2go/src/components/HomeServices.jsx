@@ -12,13 +12,13 @@ const HomeServices = () => {
         <img src={homeService} alt="folder image" className="hidden md:flex" />
         <img src={smallFolder} alt="folder image" className="md:hidden pt-16" />
         <div>
-          <h5 className="w-5/6 font-semibold text-[#FFF5E1] md:text-2xl xl:text-5xl lg:text-4xl text-xl items-center absolute z-999 lg:top-80 md:top-20 top-56 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-tight">
+          <h5 className="w-5/6 font-semibold text-[#FFF5E1] md:text-2xl xl:text-5xl lg:text-4xl text-xl items-center absolute z-999 xl:top-44 lg:top-80 md:top-40 top-56 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-tight">
             Our transportation services are designed to cater to all your travel
             needs.
-            <div className="flex flex-wrap justify-evenly xl:pt-24 pt-16">
+            <div className="flex lg:flex-nowrap flex-wrap justify-evenly lg:pt-20 pt-16">
               <div className="w-1/2 grid place-items-center md:basis-1/4">
                 <img
-                  className="xl:w-52 lg:w-36 md:w-42 w-20 md:py-0"
+                  className="xl:w-32 lg:w-36 w-20 md:py-0"
                   src={rides}
                   alt="on-demand rides image"
                 />
@@ -28,7 +28,7 @@ const HomeServices = () => {
               </div>
               <div className="w-1/2 grid place-items-center md:basis-1/4">
                 <img
-                  className="xl:w-52 lg:w-36 md:w-42 w-20 md:py-0"
+                  className="xl:w-32 lg:w-36 md:w-42 w-20 md:py-0"
                   src={safe}
                   alt="safe rides image"
                 />
@@ -38,7 +38,7 @@ const HomeServices = () => {
               </div>
               <div className="w-1/2 grid place-items-center md:basis-1/4">
                 <img
-                  className="xl:w-52 lg:w-36 md:w-42 w-20 pt-8 md:py-0"
+                  className="xl:w-32 lg:w-36 md:w-42 w-20 pt-8 md:py-0"
                   src={car}
                   alt="car image"
                 />
@@ -48,7 +48,7 @@ const HomeServices = () => {
               </div>
               <div className="w-1/2 grid place-items-center md:basis-1/4">
                 <img
-                  className="xl:w-52 lg:w-36 md:w-42 w-20 pt-8 md:py-0"
+                  className="xl:w-32 lg:w-36 md:w-42 w-20 pt-8 md:py-0"
                   src={pricing}
                   alt="pricing image"
                 />
