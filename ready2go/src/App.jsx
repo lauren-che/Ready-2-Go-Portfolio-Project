@@ -1,6 +1,6 @@
 import './App.css';
 import Landing from './pages/Landing';
-import Services from './components/Services';
+import Services from './pages/Services';
 
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
