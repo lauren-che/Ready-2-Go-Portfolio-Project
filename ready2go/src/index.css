@@ -23,19 +23,4 @@ body {
     @apply flex;
   }
 }
-@font-face {
-  font-family: 'ClashGroteskBold';
-  src: local('ClashGroteskBold'),
-    url('../fonts/ClashGrotesk-Bold.ttf') format('truetype');
-  font-weight: bold;
 
-  font-family: 'ClashGroteskRegular';
-  src: local('ClashGroteskRegular'),
-    url('../fonts/ClashGrotesk-Regular.ttf') format('truetype');
-  font-weight: normal;
-
-  font-family: 'ClashGroteskSemibold';
-  src: local('ClashGroteskSemibold'),
-    url('../fonts/ClashGrotesk-Semibold.ttf') format('truetype');
-  font-weight: semi-bold;
-}

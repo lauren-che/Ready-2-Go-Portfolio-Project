@@ -22,6 +22,9 @@ export default {
         '7/9': '105%',
         '7/10': '128%'
       },
+      borderRadius: {
+        'lg': '4rem',
+      }
     },
   },
   plugins: [],
