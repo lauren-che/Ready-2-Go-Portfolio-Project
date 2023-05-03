@@ -7,7 +7,7 @@ export default function Services() {
     <div>
       <Nav />
       <ServiceHeader />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
