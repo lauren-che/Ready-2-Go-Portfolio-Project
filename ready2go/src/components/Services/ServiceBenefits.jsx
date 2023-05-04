@@ -128,13 +128,13 @@ const ServiceBenefits = () => {
             loading="lazy"
           />
         </div>
-        <div className="grid sm:mb-6 lg:grid-cols-4 ml-11 mt-10">
-          <div className="bg-[#FFF5E1] rounded-[1.5rem] h-48 col-span-3">
-            <div className="grid grid-cols-3">
-              <h1 className="text-[6rem] font-bold mt-6 ml-8 justify-center">
+        <div className="grid sm:mb-6 lg:grid-cols-4 lg:ml-11 mt-10 lg:w-11/12 w-full">
+          <div className="bg-[#FFF5E1] rounded-[1.5rem] md:h-48 h-72 col-span-3 overflow-hidden">
+            <div className="grid md:grid-cols-3 grid-row">
+              <h1 className="md:text-[6rem] text-[1.5rem] font-bold mt-6 ml-8 justify-center">
                 24/7
               </h1>
-              <p className="col-span-2 mt-12">
+              <p className="col-span-2 md:mt-12 px-8">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
                 odit laborum corrupti ea magnam optio consequuntur, ad, voluptas
                 adipisci aliquid quia repellendus possimus iusto voluptatum
