@@ -7,6 +7,7 @@ import outwardarrow from '../../assets/outwardarrow.svg';
 import orangeclock from '../../assets/orangeclock.svg';
 import orangecard from '../../assets/orangecard.svg';
 import pricetag from '../../assets/pricetag.svg';
+import safety from '../../assets/safety.svg';
 
 const ServiceBenefits = () => {
   return (
@@ -163,7 +164,7 @@ const ServiceBenefits = () => {
               We also offer a range of vehicle options to suit your specific
               needs.
             </h1>
-            <p className="py-4 xl:ml-10 lg:mr-20 text-[#FFF5E1]">
+            <p className="py-4 xl:ml-10 lg:mr-20 text-[#FFF5E1] leading-8">
               At Ready 2 Go Transportation, we are committed to providing
               inclusive transportation solutions for all members of our
               community. We understand that mobility can be a challenge for
@@ -243,6 +244,64 @@ const ServiceBenefits = () => {
                 accommodations, we will work with you to provide a customized
                 solution that meets your needs.
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Vehicle & Ride Safety Section */}
+      <div className="rounded-t-lg bg-[#14968F] relative isolate overflow-hidden -mt-16 px-12 pt-16 pb-24 lg:overflow-visible lg:px-10">
+        <div className="grid md:grid-cols-2 md:mt-20 mt-8">
+          <div className="md:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+            <div className="lg:pr-4">
+              <div className="lg:max-w-lg mt-8">
+                <p className="text-base font-semibold leading-7 text-[#FFF5E1]">
+                  Ride Safety
+                </p>
+                <h1 className="mt-2 text-4xl font-bold tracking-tight text-[#FFF5E1]">
+                  Your Safety is Our Top Priority
+                </h1>
+                <p className="mt-6 xl:text-lg text-sm xl:leading-8 text-[#FFF5E1] md:w-11/12">
+                  We understand that safety is of the utmost importance when it
+                  comes to transportation. That&apos;s why we have implemented
+                  strict safety measures to ensure that our passengers are
+                  always safe and secure during their rides. Our vehicles are
+                  regularly inspected and maintained to ensure that they are in
+                  top condition. Our drivers undergo rigorous training to ensure
+                  that they are qualified to provide safe and reliable
+                  transportation services.
+                </p>
+              </div>
+              <a
+                href="#"
+                className="relative inline-flex items-center mt-8 lg:px-12 md:px-16 px-28 md:py-3 py-2 overflow-hidden text-lg font-medium text-[#FFF5E1] border-[#FF6602] border-2 rounded-full hover:text-[#FF6602] group hover:bg-[#FF6602] bg-[#FF6602] hover:border-[#FFF5E1]"
+              >
+                <span className="absolute left-0 block w-full h-0 transition-all bg-[#FFF5E1] opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+                <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    ></path>
+                  </svg>
+                </span>
+                <span className="relative">Learn More</span>
+              </a>
+            </div>
+            <div className="mt-12">
+              <img
+                src={safety}
+                alt="safety icons"
+                className=" lg:w-5/6 md:w-3/5 xl:ml-8"
+              />
             </div>
           </div>
         </div>
