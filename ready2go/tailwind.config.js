@@ -3,6 +3,9 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      fontWeight: {
+        thin: '50',
+      },
       fontFamily: {
         Poppins: ['Poppins', 'sans-serif'],
         Lato: 'Lato',
