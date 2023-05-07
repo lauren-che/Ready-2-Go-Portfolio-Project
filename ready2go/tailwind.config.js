@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'cleveland': "url('../../assets/cleveland.png')"
+        cleveland: "url('../../assets/cleveland.png')",
       },
       fontWeight: {
         thin: '50',
@@ -26,11 +26,11 @@ export default {
         '5/9': '90%',
         '7/8': '98%',
         '7/9': '105%',
-        '7/10': '128%'
+        '7/10': '128%',
       },
       borderRadius: {
-        'lg': '4rem',
-      }
+        lg: '4rem',
+      },
     },
   },
   plugins: [],

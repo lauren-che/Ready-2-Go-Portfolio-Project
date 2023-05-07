@@ -12,11 +12,11 @@ function Icon({ id, open }) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className={`${
-        id === open ? "rotate-180" : ""
+        id === open ? 'rotate-180' : ''
       } h-5 w-5 transition-transform`}
       fill="none"
       viewBox="0 0 24 24"
-      stroke='#FA7343'
+      stroke="#FA7343"
       strokeWidth={2}
     >
       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -25,8 +25,8 @@ function Icon({ id, open }) {
 }
 
 const Faq = () => {
-    const [open, setOpen] = useState(0);
- 
+  const [open, setOpen] = useState(0);
+
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
@@ -38,15 +38,17 @@ const Faq = () => {
       <Fragment>
         <main className="items-center">
           <Accordion
-            className="w-1/2 pt-12"
+            className="md:w-3/4 w-10/12 pt-12"
             open={open === 1}
             icon={<Icon id={1} open={open} />}
           >
             <AccordionHeader
               onClick={() => handleOpen(1)}
-              className={`${open === 1 ? 'text-[#FA7343]' : 'text-[#FFF5E1]'}`} //this will change the header text color when the question is clicked
+              className={`${
+                open === 1 ? 'text-[#FA7343]' : 'text-[#FFF5E1]'
+              } text-md md:text-xl`} //this will change the header text color when the question is clicked
             >
-              How much does the transportation service cost?
+              What are the ride fees?
             </AccordionHeader>
             <AccordionBody>
               This will depend on the type of service, distance traveled, and
@@ -55,13 +57,15 @@ const Faq = () => {
             </AccordionBody>
           </Accordion>
           <Accordion
-            className="w-1/2"
+            className="md:w-3/4 w-10/12 "
             open={open === 2}
             icon={<Icon id={2} open={open} />}
           >
             <AccordionHeader
               onClick={() => handleOpen(2)}
-              className={`${open === 2 ? 'text-[#FA7343]' : 'text-[#FFF5E1]'}`}
+              className={`${
+                open === 2 ? 'text-[#FA7343]' : 'text-[#FFF5E1]'
+              } text-md md:text-xl`}
             >
               How do I book a trip?
             </AccordionHeader>
@@ -73,15 +77,17 @@ const Faq = () => {
             </AccordionBody>
           </Accordion>
           <Accordion
-            className="w-1/2"
+            className="md:w-3/4 w-10/12 "
             open={open === 3}
             icon={<Icon id={3} open={open} />}
           >
             <AccordionHeader
               onClick={() => handleOpen(3)}
-              className={`${open === 3 ? 'text-[#FA7343]' : 'text-[#FFF5E1]'}`}
+              className={`${
+                open === 3 ? 'text-[#FA7343]' : 'text-[#FFF5E1]'
+              } text-md md:text-xl`}
             >
-              Is the transportation service wheelchair accessible?
+              Are the rides wheelchair accessible?
             </AccordionHeader>
             <AccordionBody>
               The company may offer wheelchair-accessible vehicles, but it is
@@ -89,28 +95,32 @@ const Faq = () => {
             </AccordionBody>
           </Accordion>
           <Accordion
-            className="w-1/2"
+            className="md:w-3/4 w-10/12 "
             open={open === 4}
             icon={<Icon id={4} open={open} />}
           >
             <AccordionHeader
               onClick={() => handleOpen(4)}
-              className={`${open === 4 ? 'text-[#FA7343]' : 'text-[#FFF5E1]'}`}
+              className={`${
+                open === 4 ? 'text-[#FA7343]' : 'text-[#FFF5E1]'
+              } text-md md:text-xl`}
             >
-              What areas does the transportation service cover?
+              What Cleveland areas are covered?
             </AccordionHeader>
             <AccordionBody>
               Our service area include include Cleveland and surrounding areas.
             </AccordionBody>
           </Accordion>
           <Accordion
-            className="w-1/2"
+            className="md:w-3/4 w-10/12 "
             open={open === 5}
             icon={<Icon id={5} open={open} />}
           >
             <AccordionHeader
               onClick={() => handleOpen(5)}
-              className={`${open === 5 ? 'text-[#FA7343]' : 'text-[#FFF5E1]'}`}
+              className={`${
+                open === 5 ? 'text-[#FA7343]' : 'text-[#FFF5E1]'
+              } text-md md:text-xl`}
             >
               Are the drivers insured and trained?
             </AccordionHeader>
@@ -120,13 +130,15 @@ const Faq = () => {
             </AccordionBody>
           </Accordion>
           <Accordion
-            className="w-1/2"
+            className="md:w-3/4 w-10/12"
             open={open === 6}
             icon={<Icon id={6} open={open} />}
           >
             <AccordionHeader
               onClick={() => handleOpen(6)}
-              className={`${open === 6 ? 'text-[#FA7343]' : 'text-[#FFF5E1]'}`}
+              className={`${
+                open === 6 ? 'text-[#FA7343]' : 'text-[#FFF5E1]'
+              } text-md md:text-xl`}
             >
               Can I request a specific vehicle?
             </AccordionHeader>
