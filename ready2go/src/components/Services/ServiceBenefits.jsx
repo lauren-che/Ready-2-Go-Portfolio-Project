@@ -94,7 +94,7 @@ const ServiceBenefits = () => {
       </div>
 
       {/* Social Transportation Section */}
-      <div className="rounded-t-lg bg-[#14968F] relative isolate overflow-hidden -mt-16 px-12 pt-16 pb-24 lg:overflow-visible lg:px-10">
+      <div className="rounded-t-lg bg-[#14968F] relative isolate overflow-hidden -mt-16 px-12 pt-16 pb-32 lg:overflow-visible lg:px-10">
         <div className="container xl:px-12 py-12 mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div>
