@@ -32,13 +32,16 @@ const Faq = () => {
   };
 
   return (
-    <div className="w-full px-4 pt-16 pb-32 h-auto bg-[#232323] text-[#FFF5E1]">
+    <div
+      className="w-full px-4 pt-16 pb-32 md:bg-cover bg-center text-[#FFF5E1]"
+      style={{ backgroundImage: `url${cleveland}` }}
+    >
       <h4 className="text-center text-lg py-4 tracking-[0.5rem]">FAQ</h4>
       <h1 className="text-center text-4xl">Frequently Asked Questions</h1>
       <Fragment>
         <main className="items-center">
           <Accordion
-            className="md:w-3/4 w-10/12 pt-12"
+            className="lg:w-1/2 md:w-3/4 w-10/12 pt-12"
             open={open === 1}
             icon={<Icon id={1} open={open} />}
           >
@@ -57,7 +60,7 @@ const Faq = () => {
             </AccordionBody>
           </Accordion>
           <Accordion
-            className="md:w-3/4 w-10/12 "
+            className="lg:w-1/2 md:w-3/4 w-10/12 "
             open={open === 2}
             icon={<Icon id={2} open={open} />}
           >
@@ -77,7 +80,7 @@ const Faq = () => {
             </AccordionBody>
           </Accordion>
           <Accordion
-            className="md:w-3/4 w-10/12 "
+            className="lg:w-1/2 md:w-3/4 w-10/12 "
             open={open === 3}
             icon={<Icon id={3} open={open} />}
           >
@@ -95,7 +98,7 @@ const Faq = () => {
             </AccordionBody>
           </Accordion>
           <Accordion
-            className="md:w-3/4 w-10/12 "
+            className="lg:w-1/2 md:w-3/4 w-10/12 "
             open={open === 4}
             icon={<Icon id={4} open={open} />}
           >
@@ -112,7 +115,7 @@ const Faq = () => {
             </AccordionBody>
           </Accordion>
           <Accordion
-            className="md:w-3/4 w-10/12 "
+            className="lg:w-1/2 md:w-3/4 w-10/12 "
             open={open === 5}
             icon={<Icon id={5} open={open} />}
           >
@@ -130,7 +133,7 @@ const Faq = () => {
             </AccordionBody>
           </Accordion>
           <Accordion
-            className="md:w-3/4 w-10/12"
+            className="lg:w-1/2 md:w-3/4 w-10/12"
             open={open === 6}
             icon={<Icon id={6} open={open} />}
           >

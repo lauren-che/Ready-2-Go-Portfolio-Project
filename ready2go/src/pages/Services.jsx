@@ -2,7 +2,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import ServiceHeader from '../components/Services/ServiceHeader';
 import ServiceBenefits from '../components/Services/ServiceBenefits';
-import FAQ from '../components/Services/Faq'
+import FAQ from '../components/Services/Faq';
 
 export default function Services() {
   return (
@@ -11,8 +11,7 @@ export default function Services() {
       <ServiceHeader />
       <ServiceBenefits />
       <FAQ />
-      {/* <Footer /> */}
+      <Footer />
     </div>
-  )
+  );
 }
-

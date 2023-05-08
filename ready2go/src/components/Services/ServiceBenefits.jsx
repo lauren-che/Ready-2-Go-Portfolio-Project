@@ -13,11 +13,11 @@ const ServiceBenefits = () => {
   return (
     <div>
       {/* Our Benefits Section */}
-      <div className="mx-auto max-w-5xl my-40 text-center">
+      <div className="mx-auto max-w-5xl md:my-40 my-24 text-center">
         <h2 className="text-2xl font-semibold leading-7 uppercase tracking-widest pb-6">
           ride benefits
         </h2>
-        <p className="mt-2 md:text-4xl text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <p className="px-8 mt-2 md:text-4xl text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           We offer a range of services to meet the transportation needs of
           residents in Cleveland, Ohio.
         </p>
@@ -25,7 +25,7 @@ const ServiceBenefits = () => {
 
       {/* Appointments Section */}
       <div className="rounded-t-lg bg-[#232323] relative isolate overflow-hidden px-6 pt-24 pb-32 lg:overflow-visible lg:px-10">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-2">
+        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 md:gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-2">
           <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
             <div className="lg:pr-4">
               <div className="lg:max-w-lg">
@@ -45,7 +45,7 @@ const ServiceBenefits = () => {
           </div>
           <div className="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
             <img
-              className="w-[48rem] max-w-full sm:w-[38rem]"
+              className="w-[48rem] max-w-full sm:w-[32rem] mt-8"
               src={driver1}
               alt="van driver image"
               loading="lazy"
@@ -191,7 +191,7 @@ const ServiceBenefits = () => {
 
           {/* second row or 3 tier information */}
         </div>
-        <div className="container px-6 md:py-12 py-6 mx-auto md:mt-12 text-[#FFF5E1]">
+        <div className="container px-6 md:py-12 py-6 mx-auto lg:mt-6 text-[#FFF5E1]">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <div>
               <img src={orangeclock} alt="orange clock" className="w-[4rem]" />
