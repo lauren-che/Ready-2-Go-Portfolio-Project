@@ -34,7 +34,7 @@ const Faq = () => {
   return (
     <div
       className="w-full px-4 pt-16 pb-32 md:bg-cover bg-center text-[#FFF5E1]"
-      style={{ backgroundImage: `url${cleveland}` }}
+      style={{ backgroundImage: `url('${cleveland}')` }}
     >
       <h4 className="text-center text-lg py-4 tracking-[0.5rem]">FAQ</h4>
       <h1 className="text-center text-4xl">Frequently Asked Questions</h1>
