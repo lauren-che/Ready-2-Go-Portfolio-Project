@@ -2,9 +2,11 @@ import { useState } from 'react';
 import logo from '../assets/lightlogo.svg';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import Modal from '../components/Modal';
 
 const Nav = () => {
   const [state, setState] = useState(false);
+const [openModal, setOpenModal] = useState(false);
 
   return (
     <nav className="bg-[#232323] drop-shadow-lg border-b w-full md:static md:text-sm md:border-none">
@@ -76,17 +78,20 @@ const Nav = () => {
             </li>
             <div className="space-y-3 items-center gap-x-6 md:flex md:space-y-0">
               <li>
-                <a
-                  href="#"
+                <button
+                  onClick={() => {
+                    setOpenModal(true);
+                  }}
                   className="block py-3 px-6 font-medium text-center text-[#232323] bg-[#FFF5E1] hover:bg-[#FF6602] active:shadow-none rounded-full shadow transition duration-300 md:inline hover:text-white ease"
                 >
                   Book A Ride
-                </a>
+                </button>
               </li>
             </div>
           </ul>
         </div>
       </div>
+      {openModal && <Modal closeModal={setOpenModal} />}
     </nav>
   );
 };

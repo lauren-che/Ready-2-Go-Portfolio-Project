@@ -1,7 +1,7 @@
 import hero from '../../assets/hero.png';
 import arrow from '../../assets/arrow.svg';
 
-const Hero = () => {
+const Hero = ({ setOpenModal }) => {
   return (
     <section
       id="home"
@@ -55,7 +55,7 @@ const Hero = () => {
                 ></path>
               </svg>
             </span>
-            <span className="relative">Book A Ride</span>
+            <button className="relative">Book A Ride</button>
           </a>
           <a
             href="#services"

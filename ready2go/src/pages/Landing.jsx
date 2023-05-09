@@ -6,7 +6,10 @@ import Testimonials from '../components/Landing/Testimonials';
 import About from '../components/Landing/About';
 import Footer from '../components/Footer';
 
+
+
 export default function Landing() {
+    
   return (
     <div>
         <Nav />
@@ -15,6 +18,7 @@ export default function Landing() {
         <Benefits />
         <Testimonials />
         <About />
+        
         <Footer />
     </div>
   )
