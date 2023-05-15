@@ -1,0 +1,19 @@
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+  
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Tailwind Styles */
+
+.app {
+  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+}
+.form-input {
+  @apply block w-[22rem] h-10 px-4 py-2 mt-2 text-primary-white bg-primary-black border border-primary-white rounded-full focus:border-primary-orange focus:ring-primary-orange focus:ring-opacity-40 focus:outline-none focus:ring placeholder:text-xs placeholder:text-primary-white;
+}
+.form-error {
+  @apply text-primary-orange text-xs p-2;
+}
