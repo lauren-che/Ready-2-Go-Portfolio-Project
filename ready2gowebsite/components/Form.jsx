@@ -1,17 +1,25 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { Field, Form, Formik } from 'formik';
 import Image from 'next/image';
 import * as Yup from 'yup';
-
 import supabase from '@src/lib/supabase';
 
-// date/time picker imports
-import dayjs from 'dayjs';
+// import from mapbox
+import { AddressAutofill } from '@mapbox/search-js-react';
+// import MAPBOX_ACCESS_TOKEN from '@src/lib/mapbox';
 
 function BookingForm({ closeModal }) {
-    // default form values
+  // mapbox hooks
+  // const [token, setToken] = useState('');
+  // useEffect(() => {
+  //   const accessToken = { MAPBOX_ACCESS_TOKEN };
+  //   setToken(accessToken);
+  //   config.accessToken = accessToken;
+  // }, []);
+
+  // default form values
   const defaultBooking = {
     pickup_date: '',
     email: '',
@@ -33,7 +41,7 @@ function BookingForm({ closeModal }) {
 
   // Yup schema to validate the form
   const BookingSchema = Yup.object().shape({
-    pickup_date: Yup.string().required('Please choose a pickup date'),
+    pickup_date: Yup.string().required('Please choose a pickup date and time'),
     email: Yup.string()
       .required('Your email is required')
       .email('Please enter a valid email address')
@@ -78,7 +86,7 @@ function BookingForm({ closeModal }) {
       customer_phone_number,
     } = values;
     try {
-        // take each value and insert it into the bookings supabase postfresql db table
+      // take each value and insert it into the bookings supabase postfresql db table
       const { error } = await supabase.from('bookings').insert({
         pickup_date,
         email,
@@ -112,10 +120,12 @@ function BookingForm({ closeModal }) {
       className="flex fixed justify-center items-center w-[100vw] h-[100vh] p-6 mx-auto"
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
     >
-      <div className="p-8 flex flex-col w-[800px] h-[650px] bg-primary-black shadow-xl text-primary-white border-primary-white border-[0.1rem] rounded-[1rem]">
+      <div className="p-8 flex flex-col w-[800px] md:h-[650px] h-[850px] bg-primary-black shadow-xl text-primary-white border-primary-white border-[0.1rem] rounded-[1rem]">
         <div className="justify-center">
-          <main className="justify-between flex-row items-center py-4">
-            <h2 className="text-3xl font-bold justify-center">Book A Ride</h2>
+          <main className="justify-between md:flex-row md:items-center py-4">
+            <h2 className="md:text-3xl text-2xl font-bold justify-center">
+              Book A Ride
+            </h2>
             <h4 className="mt-1 uppercase tracking-[0.2rem] justify-center">
               pick up information
             </h4>
@@ -135,21 +145,34 @@ function BookingForm({ closeModal }) {
           onSubmit={handleSubmit}
         >
           <Form>
-            <div className="form-control grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+            <div className="form-control grid grid-cols-1 md:gap-6 gap-1 mt-4 sm:grid-cols-2">
               <Field name="pickup_date">
                 {({ field, meta }) => (
-                  <div className="rounded-lg">
+                  <div className="rounded-lg form-control relative">
                     <label htmlFor="pickup_date"> </label>
-                    <input
-                      {...field}
-                      type="date"
-                      id="pickup_date"
-                      className="form-input"
-                    />
+                    <span className="text-xs">
+                      <input
+                        {...field}
+                        type="datetime-local"
+                        id="pickup_date"
+                        className="form-input"
+                        min={new Date()
+                          .toISOString()
+                          .slice(0, new Date().toISOString().lastIndexOf(':'))} // this line of code will make sure the user cannot choose a date before today's date
+                      />
+                    </span>
 
                     {meta.error && meta.touched && (
                       <span className="form-error">{meta.error}</span>
                     )}
+                    {/* <span className="icon-form-image">
+                      <Image
+                        src="/assets/icons/calendaricon.svg"
+                        alt="calendar icon"
+                        width={30}
+                        height={30}
+                      />
+                    </span> */}
                   </div>
                 )}
               </Field>
@@ -233,12 +256,27 @@ function BookingForm({ closeModal }) {
                 {({ field, meta }) => (
                   <div className="form-control relative">
                     <label htmlFor="pickup_address"></label>
-                    <input
-                      {...field}
-                      placeholder="Pickup Address"
-                      id="pickup_address"
-                      className="form-input"
-                    />
+                    <AddressAutofill
+                      theme={{
+                        variables: {
+                          fontFamily: 'Avenir, sans-serif',
+                          colorBackground: '#303030',
+                          colorText: '#FFF5E1',
+                          colorBackgroundHover: '#14968F',
+                          border: '#FFF5E1',
+                        },
+                      }}
+                      accessToken="pk.eyJ1IjoibGNicm93bjkwIiwiYSI6ImNsaHFoOHpweTA4ajQzZHBsemE0ZTJnZ3YifQ.JPhFhgiC8I5-lyJnsHYftA"
+                    >
+                      <input
+                        {...field}
+                        placeholder="Pickup Address"
+                        id="pickup_address"
+                        className="form-input"
+                        autoComplete="full_address"
+                      />
+                    </AddressAutofill>
+
                     {meta.error && meta.touched && (
                       <span className="form-error">{meta.error}</span>
                     )}
@@ -258,12 +296,27 @@ function BookingForm({ closeModal }) {
                 {({ field, meta }) => (
                   <div className="form-control relative">
                     <label htmlFor="insurance_company_address"></label>
-                    <input
-                      {...field}
-                      placeholder="Insurance Company Address"
-                      id="insurance_company_address"
-                      className="form-input"
-                    />
+                    <AddressAutofill
+                      theme={{
+                        variables: {
+                          fontFamily: 'Avenir, sans-serif',
+                          colorBackground: '#303030',
+                          colorText: '#FFF5E1',
+                          colorBackgroundHover: '#14968F',
+                          border: '#FFF5E1',
+                        },
+                      }}
+                      accessToken="pk.eyJ1IjoibGNicm93bjkwIiwiYSI6ImNsaHFoOHpweTA4ajQzZHBsemE0ZTJnZ3YifQ.JPhFhgiC8I5-lyJnsHYftA"
+                    >
+                      <input
+                        {...field}
+                        placeholder="Insurance Company Address"
+                        id="insurance_company_address"
+                        className="form-input"
+                        autoComplete="properties.full_address"
+                      />
+                    </AddressAutofill>
+
                     {meta.error && meta.touched && (
                       <span className="form-error">{meta.error}</span>
                     )}
@@ -283,12 +336,27 @@ function BookingForm({ closeModal }) {
                 {({ field, meta }) => (
                   <div className="form-control relative">
                     <label htmlFor="drop_off_address"></label>
-                    <input
-                      {...field}
-                      placeholder="Dropoff Address"
-                      id="drop_off_address"
-                      className="form-input"
-                    />
+                    <AddressAutofill
+                      theme={{
+                        variables: {
+                          fontFamily: 'Avenir, sans-serif',
+                          colorBackground: '#303030',
+                          colorText: '#FFF5E1',
+                          colorBackgroundHover: '#14968F',
+                          border: '#FFF5E1',
+                        },
+                      }}
+                      accessToken="pk.eyJ1IjoibGNicm93bjkwIiwiYSI6ImNsaHFoOHpweTA4ajQzZHBsemE0ZTJnZ3YifQ.JPhFhgiC8I5-lyJnsHYftA"
+                    >
+                      <input
+                        {...field}
+                        placeholder="Dropoff Address"
+                        id="drop_off_address"
+                        className="form-input"
+                        autoComplete="full_address"
+                      />
+                    </AddressAutofill>
+
                     {meta.error && meta.touched && (
                       <span className="form-error">{meta.error}</span>
                     )}
@@ -358,7 +426,7 @@ function BookingForm({ closeModal }) {
 
               <Field name="return_agreement">
                 {({ field, meta }) => (
-                  <div className="form-control relative mt-4 ml-8">
+                  <div className="form-control relative mt-4 md:ml-8 ml-4">
                     <input
                       {...field}
                       type="checkbox"
@@ -368,7 +436,7 @@ function BookingForm({ closeModal }) {
                     />
                     <label
                       htmlFor="return_agreement"
-                      className="inline-block pl-[0.5rem] hover:cursor-pointer bordered-checkbox-[#14968F] text-xs"
+                      className="md:inline-block pl-[0.5rem] hover:cursor-pointer bordered-checkbox-[#14968F] text-xs"
                     >
                       I agree to be{' '}
                       <span className="text-primary-orange">

@@ -1,7 +1,6 @@
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
-  @import '@geoapify/geocoder-autocomplete/styles/minimal.css';
-  
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,13 +12,13 @@
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
 .form-input {
-  @apply block w-[22rem] h-10 px-4 py-2 mt-2 text-primary-white bg-primary-black border border-primary-white rounded-full focus:border-primary-orange focus:ring-primary-orange focus:ring-opacity-40 focus:outline-none focus:ring placeholder:text-xs placeholder:text-primary-white;
+  @apply block lg:w-[22rem] w-[20rem] h-10 px-4 py-2 mt-2 text-primary-white bg-primary-black border border-primary-white rounded-full focus:border-primary-orange focus:ring-primary-orange focus:ring-opacity-40 focus:outline-none focus:ring placeholder:text-xs placeholder:text-primary-white;
 }
 .form-error {
   @apply text-primary-orange text-xs p-2;
 }
 .icon-form-image {
-  @apply absolute inset-y-5 right-0 flex items-center mr-6 w-4 h-4;
+  @apply absolute inset-y-5 right-0 flex items-center lg:mr-6 mr-2 w-4 h-4;
 }
 body {
   @apply box-border bg-[#FFF5E1] text-[#232323];
