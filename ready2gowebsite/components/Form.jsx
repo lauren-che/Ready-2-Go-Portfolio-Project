@@ -116,7 +116,7 @@ function BookingForm({ closeModal }) {
         <div className="justify-center">
           <main className="justify-between flex-row items-center py-4">
             <h2 className="text-3xl font-bold justify-center">Book A Ride</h2>
-            <h4 className="mt-4 uppercase tracking-[0.2rem]">
+            <h4 className="mt-1 uppercase tracking-[0.2rem] justify-center">
               pick up information
             </h4>
           </main>
@@ -146,7 +146,7 @@ function BookingForm({ closeModal }) {
                       id="pickup_date"
                       className="form-input"
                     />
-                     
+
                     {meta.error && meta.touched && (
                       <span className="form-error">{meta.error}</span>
                     )}
@@ -358,7 +358,7 @@ function BookingForm({ closeModal }) {
 
               <Field name="return_agreement">
                 {({ field, meta }) => (
-                  <div className="form-control relative">
+                  <div className="form-control relative mt-4 ml-8">
                     <input
                       {...field}
                       type="checkbox"
