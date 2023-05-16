@@ -4,7 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { HashLink } from 'react-router-hash-link';
 import { useState } from 'react';
-import Modal from '@components/Modal';
+// import Modal from '@components/Modal';
+ import Modal from '@components/Form';
 
 const Nav = () => {
   const [state, setState] = useState(false);

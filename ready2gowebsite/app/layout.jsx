@@ -12,14 +12,13 @@ export const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body>
-      <div className='main'>
-        <Nav />
-        {children}
-      </div>
-        
+          <div className="main">
+            <Nav />
+            {children}
+          </div>
       </body>
     </html>
-  )
-}
+  );
+};
 
-export default RootLayout
+export default RootLayout;
