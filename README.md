@@ -11,13 +11,13 @@ Ready 2 Go is a startup company in Cleveland, OH that offers rides to disabled a
 The following technologies were used to develop The Verdict Group:
 
 - VS Code
-- React
+- Next.js 13
 - Tailwind CSS
-- MongoDB
-- Mailboxlayer API - email validation
-- Geoapify - city address validation
-- Geocoding API - city address coordinate conversion
-- Netlify
+- Supabase - For PostgreSQL database
+- Formik & Yup - Booking Form Validation
+- Mapbox API - Autocomplete Address Fields Feature
+- Mapbox Geocoding API - Address Coordinates
+- Vercel
 
 ## Features
 
