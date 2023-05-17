@@ -8,7 +8,7 @@ import supabase from '@src/lib/supabase';
 
 // import from mapbox
 import { AddressAutofill } from '@mapbox/search-js-react';
-// import MAPBOX_ACCESS_TOKEN from '@src/lib/mapbox';
+import MAPBOX_ACCESS_TOKEN from '@src/lib/mapbox';
 
 function BookingForm({ closeModal }) {
   // mapbox hooks
@@ -26,6 +26,7 @@ function BookingForm({ closeModal }) {
     customer_name: '',
     insurance_company_name: '',
     pickup_address: '',
+    insurance_member_id: '',
     insurance_company_address: '',
     drop_off_address: '',
     insurance_company_phone: '',
@@ -54,6 +55,9 @@ function BookingForm({ closeModal }) {
       .required('Please enter your insurance name')
       .min(2),
     pickup_address: Yup.string().required('Please enter your pickup address'),
+    insurance_member_id: Yup.string()
+      .min(2, 'Please enter a valid insurance member id number')
+      .required('Please enter your insurance member id number'),
     insurance_company_address: Yup.string()
       .min(2)
       .required('Please enter your insurance company address'),
@@ -80,6 +84,7 @@ function BookingForm({ closeModal }) {
       customer_name,
       insurance_company_name,
       pickup_address,
+      insurance_member_id,
       insurance_company_address,
       drop_off_address,
       insurance_company_phone,
@@ -93,6 +98,7 @@ function BookingForm({ closeModal }) {
         customer_name,
         insurance_company_name,
         pickup_address,
+        insurance_member_id,
         insurance_company_address,
         drop_off_address,
         insurance_company_phone,
@@ -102,6 +108,7 @@ function BookingForm({ closeModal }) {
         throw error;
       }
       setFeedback('Your ride has been booked successfully');
+      // reset the form once submitted successfully
       resetForm();
     } catch (error) {
       console.log('Error occurred', { error });
@@ -120,7 +127,7 @@ function BookingForm({ closeModal }) {
       className="flex fixed justify-center items-center w-[100vw] h-[100vh] p-6 mx-auto"
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
     >
-      <div className="p-8 flex flex-col w-[800px] md:h-[650px] h-[850px] bg-primary-black shadow-xl text-primary-white border-primary-white border-[0.1rem] rounded-[1rem]">
+      <div className="p-8 flex flex-col w-[800px] bg-primary-black shadow-xl text-primary-white border-primary-white border-[0.1rem] rounded-[1rem]">
         <div className="justify-center">
           <main className="justify-between md:flex-row md:items-center py-4">
             <h2 className="md:text-3xl text-2xl font-bold justify-center">
@@ -145,7 +152,7 @@ function BookingForm({ closeModal }) {
           onSubmit={handleSubmit}
         >
           <Form>
-            <div className="form-control grid grid-cols-1 md:gap-6 gap-1 mt-4 sm:grid-cols-2">
+            <div className="form-control grid grid-cols-2 md:gap-6 gap-1 mt-4 sm:grid-cols-2">
               <Field name="pickup_date">
                 {({ field, meta }) => (
                   <div className="rounded-lg form-control relative">
@@ -155,7 +162,7 @@ function BookingForm({ closeModal }) {
                         {...field}
                         type="datetime-local"
                         id="pickup_date"
-                        className="form-input"
+                        className="form-input datepicker"
                         min={new Date()
                           .toISOString()
                           .slice(0, new Date().toISOString().lastIndexOf(':'))} // this line of code will make sure the user cannot choose a date before today's date
@@ -186,6 +193,8 @@ function BookingForm({ closeModal }) {
                       placeholder="Customer Email"
                       id="email"
                       className="form-input"
+                      role="presentation"
+                      autoComplete="off" // this will block the browser autocomplete which causes a white background on the form field after the user selects an entry from the autocomplete options
                     />
                     {meta.error && meta.touched && (
                       <span className="form-error">{meta.error}</span>
@@ -211,6 +220,7 @@ function BookingForm({ closeModal }) {
                       placeholder="Customer Name"
                       id="customer_name"
                       className="form-input"
+                      autoComplete="off"
                     />
                     {meta.error && meta.touched && (
                       <span className="form-error">{meta.error}</span>
@@ -236,6 +246,7 @@ function BookingForm({ closeModal }) {
                       placeholder="Insurance Company Name"
                       id="insurance_company_name"
                       className="form-input"
+                      autoComplete="off"
                     />
                     {meta.error && meta.touched && (
                       <span className="form-error">{meta.error}</span>
@@ -266,7 +277,7 @@ function BookingForm({ closeModal }) {
                           border: '#FFF5E1',
                         },
                       }}
-                      accessToken="pk.eyJ1IjoibGNicm93bjkwIiwiYSI6ImNsaHFoOHpweTA4ajQzZHBsemE0ZTJnZ3YifQ.JPhFhgiC8I5-lyJnsHYftA"
+                      accessToken={MAPBOX_ACCESS_TOKEN}
                     >
                       <input
                         {...field}
@@ -292,6 +303,32 @@ function BookingForm({ closeModal }) {
                 )}
               </Field>
 
+              <Field name="insurance_member_id">
+                {({ field, meta }) => (
+                  <div className="form-control relative">
+                    <label htmlFor="insurance_member_id"></label>
+                    <input
+                      {...field}
+                      placeholder="Insurance Member ID #"
+                      id="insurance_member_id"
+                      className="form-input"
+                      autoComplete="off"
+                    />
+                    {meta.error && meta.touched && (
+                      <span className="form-error">{meta.error}</span>
+                    )}
+                    <span className="icon-form-image">
+                      <Image
+                        src="/assets/icons/hashicon.svg"
+                        alt="hash icon"
+                        width={30}
+                        height={30}
+                      />
+                    </span>
+                  </div>
+                )}
+              </Field>
+
               <Field name="insurance_company_address">
                 {({ field, meta }) => (
                   <div className="form-control relative">
@@ -306,7 +343,7 @@ function BookingForm({ closeModal }) {
                           border: '#FFF5E1',
                         },
                       }}
-                      accessToken="pk.eyJ1IjoibGNicm93bjkwIiwiYSI6ImNsaHFoOHpweTA4ajQzZHBsemE0ZTJnZ3YifQ.JPhFhgiC8I5-lyJnsHYftA"
+                      accessToken={MAPBOX_ACCESS_TOKEN}
                     >
                       <input
                         {...field}
@@ -346,7 +383,7 @@ function BookingForm({ closeModal }) {
                           border: '#FFF5E1',
                         },
                       }}
-                      accessToken="pk.eyJ1IjoibGNicm93bjkwIiwiYSI6ImNsaHFoOHpweTA4ajQzZHBsemE0ZTJnZ3YifQ.JPhFhgiC8I5-lyJnsHYftA"
+                      accessToken={MAPBOX_ACCESS_TOKEN}
                     >
                       <input
                         {...field}
@@ -382,6 +419,7 @@ function BookingForm({ closeModal }) {
                       placeholder="Insurance Company Phone"
                       id="insurance_company_phone"
                       className="form-input"
+                      autoComplete="off"
                     />
                     {meta.error && meta.touched && (
                       <span className="form-error">{meta.error}</span>
@@ -408,6 +446,7 @@ function BookingForm({ closeModal }) {
                       placeholder="Customer Phone Number"
                       id="customer_phone_number"
                       className="form-input"
+                      autoComplete="off"
                     />
                     {meta.error && meta.touched && (
                       <span className="form-error">{meta.error}</span>
@@ -426,7 +465,7 @@ function BookingForm({ closeModal }) {
 
               <Field name="return_agreement">
                 {({ field, meta }) => (
-                  <div className="form-control relative mt-4 md:ml-8 ml-4">
+                  <main className="form-control relative mt-4 md:ml-8 ml-4 flex-row justify-center col-span-2">
                     <input
                       {...field}
                       type="checkbox"
@@ -444,9 +483,9 @@ function BookingForm({ closeModal }) {
                       </span>
                     </label>
                     {meta.error && meta.touched && (
-                      <span className="form-error">{meta.error}</span>
+                      <span className='text-xs pl-2' >{meta.error}</span>
                     )}
-                  </div>
+                  </main>
                 )}
               </Field>
             </div>
