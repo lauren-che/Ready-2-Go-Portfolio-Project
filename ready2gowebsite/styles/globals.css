@@ -8,18 +8,6 @@
 
 /* Tailwind Styles */
 
-.app {
-  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
-}
-.form-input {
-  @apply block lg:w-[22rem] w-[20rem] h-10 px-4 py-2 mt-2 text-primary-white bg-primary-black border border-primary-white rounded-full focus:border-primary-orange focus:ring-primary-orange focus:ring-opacity-40 focus:outline-none focus:ring placeholder:text-xs placeholder:text-primary-white;
-}
-.form-error {
-  @apply text-primary-orange text-xs p-2;
-}
-.icon-form-image {
-  @apply absolute inset-y-5 right-0 flex items-center lg:mr-6 mr-2 w-4 h-4;
-}
 body {
   @apply box-border bg-[#FFF5E1] text-[#232323];
 }
@@ -37,6 +25,24 @@ body {
     @apply flex flex-col;
   }
 }
-.datepicker {
-  
+.app {
+  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+}
+.form-input {
+  @apply block lg:w-[22rem] w-[20rem] h-10 px-4 py-2 mt-2 text-primary-white bg-primary-black border border-primary-white rounded-full focus:border-primary-orange focus:ring-primary-orange focus:ring-opacity-40 focus:outline-none focus:ring placeholder:text-xs placeholder:text-primary-white;
+}
+.form-error {
+  @apply text-primary-orange text-xs p-2;
+}
+.icon-form-image {
+  @apply absolute inset-y-5 right-0 flex items-center lg:mr-6 mr-2 w-4 h-4;
+}
+.home-service-container {
+  @apply md:w-1/2 grid md:basis-1/4 place-items-center;
+}
+.home-service-image {
+  @apply lg:w-48 w-24 md:py-0;
+}
+.home-service-text {
+  @apply xl:text-xl lg:text-lg text-xs xl:w-56 lg:w-48 md:w-32 w-32 py-2;
 }

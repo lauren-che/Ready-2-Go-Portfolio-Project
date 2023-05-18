@@ -107,7 +107,11 @@ function BookingForm({ closeModal }) {
       if (error) {
         throw error;
       }
-      setFeedback('Your ride has been booked successfully');
+      setFeedback(
+        <span className="text-primary-orange text-lg">
+          Your ride has been booked successfully
+        </span>
+      );
       // reset the form once submitted successfully
       resetForm();
     } catch (error) {
@@ -118,7 +122,7 @@ function BookingForm({ closeModal }) {
 
   useEffect(() => {
     if (feedback) {
-      setTimeout(() => setFeedback(''), 3000);
+      setTimeout(() => setFeedback(''), 20000);
     }
   }, [feedback]);
 
@@ -284,7 +288,7 @@ function BookingForm({ closeModal }) {
                         placeholder="Pickup Address"
                         id="pickup_address"
                         className="form-input"
-                        autoComplete="full_address"
+                        autoComplete="street-address"
                       />
                     </AddressAutofill>
 
@@ -350,7 +354,7 @@ function BookingForm({ closeModal }) {
                         placeholder="Insurance Company Address"
                         id="insurance_company_address"
                         className="form-input"
-                        autoComplete="properties.full_address"
+                        autoComplete="street-address"
                       />
                     </AddressAutofill>
 
@@ -390,7 +394,7 @@ function BookingForm({ closeModal }) {
                         placeholder="Dropoff Address"
                         id="drop_off_address"
                         className="form-input"
-                        autoComplete="full_address"
+                        autoComplete="street-address"
                       />
                     </AddressAutofill>
 
@@ -409,15 +413,15 @@ function BookingForm({ closeModal }) {
                 )}
               </Field>
 
-              <Field name="insurance_company_phone">
+              <Field name="customer_phone_number">
                 {({ field, meta }) => (
                   <div className="form-control relative">
-                    <label htmlFor="insurance_company_phone"></label>
+                    <label htmlFor="customer_phone_number"></label>
                     <input
                       {...field}
                       type="tel"
-                      placeholder="Insurance Company Phone"
-                      id="insurance_company_phone"
+                      placeholder="Customer Phone Number"
+                      id="customer_phone_number"
                       className="form-input"
                       autoComplete="off"
                     />
@@ -436,15 +440,15 @@ function BookingForm({ closeModal }) {
                 )}
               </Field>
 
-              <Field name="customer_phone_number">
+              <Field name="insurance_company_phone">
                 {({ field, meta }) => (
                   <div className="form-control relative">
-                    <label htmlFor="customer_phone_number"></label>
+                    <label htmlFor="insurance_company_phone"></label>
                     <input
                       {...field}
                       type="tel"
-                      placeholder="Customer Phone Number"
-                      id="customer_phone_number"
+                      placeholder="Insurance Company Phone"
+                      id="insurance_company_phone"
                       className="form-input"
                       autoComplete="off"
                     />
@@ -483,7 +487,7 @@ function BookingForm({ closeModal }) {
                       </span>
                     </label>
                     {meta.error && meta.touched && (
-                      <span className='text-xs pl-2' >{meta.error}</span>
+                      <span className="text-xs pl-2">{meta.error}</span>
                     )}
                   </main>
                 )}

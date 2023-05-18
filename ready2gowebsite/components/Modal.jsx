@@ -1,27 +1,41 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
+import { Field, Form, Formik } from 'formik';
 import Image from 'next/image';
-// import type { NextPage } from 'next';
-import { useFormik, Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import { Menu } from '@headlessui/react';
-import { createClient } from '@supabase/supabase-js';
-
 import supabase from '@src/lib/supabase';
 
+// import from mapbox
+import { AddressAutofill } from '@mapbox/search-js-react';
+import MAPBOX_ACCESS_TOKEN from '@src/lib/mapbox';
 
-const Modal = ({ closeModal }) => {
+function BookingForm({ closeModal }) {
+
+  // default form values
+  const defaultBooking = {
+    pickup_date: '',
+    email: '',
+    customer_name: '',
+    insurance_company_name: '',
+    pickup_address: '',
+    insurance_member_id: '',
+    insurance_company_address: '',
+    drop_off_address: '',
+    insurance_company_phone: '',
+    customer_phone_number: '',
+    return_agreement: false,
+  };
+
+  const [feedback, setFeedback] = useState('');
+
   // Regex for phone number validation
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
-  //
-  const [feeback, setFeedback] = useState('');
-
   // Yup schema to validate the form
-  const schema = Yup.object().shape({
-    pickup_date: Yup.string().required('Please choose a pickup date'),
+  const BookingSchema = Yup.object().shape({
+    pickup_date: Yup.string().required('Please choose a pickup date and time'),
     email: Yup.string()
       .required('Your email is required')
       .email('Please enter a valid email address')
@@ -34,12 +48,15 @@ const Modal = ({ closeModal }) => {
       .required('Please enter your insurance name')
       .min(2),
     pickup_address: Yup.string().required('Please enter your pickup address'),
-    insurance_company_address: Yup.string().required(
-      'Please enter your insurance company address'
-    ),
-    drop_off_address: Yup.string().required(
-      'Please enter your dropoff address'
-    ),
+    insurance_member_id: Yup.string()
+      .min(2, 'Please enter a valid insurance member id number')
+      .required('Please enter your insurance member id number'),
+    insurance_company_address: Yup.string()
+      .min(2)
+      .required('Please enter your insurance company address'),
+    drop_off_address: Yup.string()
+      .min(2)
+      .required('Please enter your dropoff address'),
     insurance_company_phone: Yup.string()
       .required('Please enter your insurance companies phone number')
       .matches(phoneRegExp, 'Please provide a valid phone number'),
@@ -52,354 +69,428 @@ const Modal = ({ closeModal }) => {
     ),
   });
 
-  useEffect(() => {
-    if (feeback) {
-      setTimeout(() => setFeedback(''), 2000);
-    }
-  }, [feeback]);
-
-  // Formik hook to handle the form state
-  const formik = useFormik({
-    initialValues: {
-      pickup_date: '',
-      email: '',
-      customer_name: '',
-      insurance_company_name: '',
-      pickup_address: '',
-      insurance_company_address: '',
-      drop_off_address: '',
-      insurance_company_phone: '',
-      customer_phone_number: '',
-      return_agreement: false,
-    },
-
-    // Pass the Yup schema to validate the form
-    validationSchema: schema,
-
-    // Handle form submission
-    onSubmit: async ({
+  async function handleSubmit(values, { resetForm }) {
+    // on submit take the the form input names and assign them to a variable called values
+    const {
       pickup_date,
       email,
       customer_name,
       insurance_company_name,
       pickup_address,
+      insurance_member_id,
       insurance_company_address,
       drop_off_address,
       insurance_company_phone,
       customer_phone_number,
-    }) => {
-      // Make a request to the backend here to store the data
-      async function handleSubmit(values, { resetForm }) {
-        const {
-          pickup_date,
-          email,
-          customer_name,
-          insurance_company_name,
-          pickup_address,
-          insurance_company_address,
-          drop_off_address,
-          insurance_company_phone,
-          customer_phone_number,
-        } = values;
-        try {
-          await submitFormAsync({
-            pickup_date,
-            email,
-            customer_name,
-            insurance_company_name,
-            pickup_address,
-            insurance_company_address,
-            drop_off_address,
-            insurance_company_phone,
-            customer_phone_number,
-          });
-          setFeedback('Your ride has been booked successfully');
-          resetForm();
-        } catch (error) {
-          console.log('Error occurred', { error });
-          setFeedback('An error occurred');
-        }
+    } = values;
+    try {
+      // take each value and insert it into the bookings supabase postgresql db table
+      const { error } = await supabase.from('bookings').insert({
+        pickup_date,
+        email,
+        customer_name,
+        insurance_company_name,
+        pickup_address,
+        insurance_member_id,
+        insurance_company_address,
+        drop_off_address,
+        insurance_company_phone,
+        customer_phone_number,
+      });
+      if (error) {
+        throw error;
       }
-    },
-  });
+      setFeedback(<span className='text-primary-orange'>'Your ride has been booked successfully'</span>);
+      // reset the form once submitted successfully
+      resetForm();
+    } catch (error) {
+      console.log('Error occurred', { error });
+      setFeedback('An error occurred');
+    }
+  }
 
-  // Destructure the formik object
-  const { errors, touched, values, handleChange, handleSubmit } = formik;
-
-  // supabase database details
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  );
+  useEffect(() => {
+    if (feedback) {
+      setTimeout(() => setFeedback(''), 20000);
+    }
+  }, [feedback]);
 
   return (
-    <div
+    <section
       className="flex fixed justify-center items-center w-[100vw] h-[100vh] p-6 mx-auto"
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
     >
-      <div className="p-8 flex flex-col w-[800px] h-[620px] bg-primary-black shadow-xl text-primary-white border-primary-white border-[0.1rem] rounded-[1rem]">
+      <div className="p-8 flex flex-col w-[800px] bg-primary-black shadow-xl text-primary-white border-primary-white border-[0.1rem] rounded-[1rem]">
         <div className="justify-center">
-          <main className="justify-between flex-row items-center">
-            <h2 className="pt-8 text-3xl font-bold">Book A Ride</h2>
-            <h4 className="mt-4 uppercase tracking-[0.2rem]">
+          <main className="justify-between md:flex-row md:items-center py-4">
+            <h2 className="md:text-3xl text-2xl font-bold justify-center">
+              Book A Ride
+            </h2>
+            <h4 className="mt-1 uppercase tracking-[0.2rem] justify-center">
               pick up information
             </h4>
           </main>
         </div>
 
-        {/* form starts here */}
+        {feedback && (
+          <div className="feedback">
+            <p>{feedback}</p>
+          </div>
+        )}
+
         <Formik
           enableReinitialize
-          initialValues={formik}
-          validationSchema={schema}
+          initialValues={defaultBooking}
+          validationSchema={BookingSchema}
           onSubmit={handleSubmit}
         >
-          <form onSubmit={handleSubmit} method="POST">
-            <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-              <div className="rounded-lg">
-                <label htmlFor="pickup_date"></label>
-                <input
-                  type="date"
-                  id="pickup_date"
-                  name="pickup_date"
-                  value={values.pickup_date}
-                  onChange={handleChange}
-                  className="form-input"
-                />
+          <Form>
+            <div className="form-control grid grid-cols-2 md:gap-6 gap-1 mt-4 sm:grid-cols-2">
+              <Field name="pickup_date">
+                {({ field, meta }) => (
+                  <div className="rounded-lg form-control relative">
+                    <label htmlFor="pickup_date"> </label>
+                    <span className="text-xs">
+                      <input
+                        {...field}
+                        type="datetime-local"
+                        id="pickup_date"
+                        className="form-input datepicker"
+                        min={new Date()
+                          .toISOString()
+                          .slice(0, new Date().toISOString().lastIndexOf(':'))} // this line of code will make sure the user cannot choose a date before today's date
+                      />
+                    </span>
 
-                {/* The below code snippet checks whether the error exists and if the field has been touched. If both conditions are true, then it displays the error message. */}
-                {errors.pickup_date && touched.pickup_date && (
-                  <span className="form-error">{errors.pickup_date}</span>
+                    {meta.error && meta.touched && (
+                      <span className="form-error">{meta.error}</span>
+                    )}
+                    {/* <span className="icon-form-image">
+                      <Image
+                        src="/assets/icons/calendaricon.svg"
+                        alt="calendar icon"
+                        width={30}
+                        height={30}
+                      />
+                    </span> */}
+                  </div>
                 )}
-              </div>
-              <div className="relative">
-                <label htmlFor="email"></label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={values.email}
-                  onChange={handleChange}
-                  placeholder="Customer Email"
-                  className="form-input"
-                />
-                {errors.email && touched.email && (
-                  <span className="form-error">{errors.email}</span>
-                )}
-                <span className="absolute inset-y-5 right-0 flex items-center mr-6 w-4 h-4">
-                  <Image
-                    src="/assets/icons/emailicon.svg"
-                    alt="email icon"
-                    width={30}
-                    height={30}
-                  />
-                </span>
-              </div>
-              <div className="relative">
-                <label htmlFor="customer_name"></label>
-                <input
-                  type="text"
-                  id="customer_name"
-                  name="customer_name"
-                  value={values.customer_name}
-                  onChange={handleChange}
-                  placeholder="Customer Name"
-                  className="form-input"
-                />
-                {errors.customer_name && touched.customer_name && (
-                  <span className="form-error">{errors.customer_name}</span>
-                )}
-                <span className="absolute inset-y-5 right-0 flex items-center mr-6 w-4 h-4">
-                  <Image
-                    src="/assets/icons/usericon.svg"
-                    alt="user icon"
-                    width={30}
-                    height={30}
-                  />
-                </span>
-              </div>
-              <div className="relative">
-                <label htmlFor="insurance_company_name"></label>
-                <input
-                  type="text"
-                  id="insurance_company_name"
-                  name="insurance_company_name"
-                  value={values.insurance_company_name}
-                  onChange={handleChange}
-                  placeholder="Insurance Company Name"
-                  className="form-input"
-                />
-                {errors.insurance_company_name &&
-                  touched.insurance_company_name && (
-                    <span className="form-error">
-                      {errors.insurance_company_name}
-                    </span>
-                  )}
-                <span className="absolute inset-y-5 right-0 flex items-center mr-6 w-4 h-4">
-                  <Image
-                    src="/assets/icons/officeicon.svg"
-                    alt="office icon"
-                    width={30}
-                    height={30}
-                  />
-                </span>
-              </div>
-              <div className="relative">
-                <input
-                  type="text"
-                  id="pickup_address"
-                  name="pickup_address"
-                  value={values.pickup_address}
-                  onChange={handleChange}
-                  placeholder="Pick Up Address"
-                  className="form-input"
-                />
-                {errors.pickup_address && touched.pickup_address && (
-                  <span className="form-error">{errors.pickup_address}</span>
-                )}
-                <span className="absolute inset-y-5 right-0 flex items-center mr-6 w-4 h-4">
-                  <Image
-                    src="/assets/icons/addressicon.svg"
-                    alt="address icon"
-                    width={30}
-                    height={30}
-                  />
-                </span>
-              </div>
-              <div className="relative">
-                <input
-                  type="text"
-                  id="insurance_company_address"
-                  name="insurance_company_address"
-                  value={values.insurance_company_address}
-                  onChange={handleChange}
-                  placeholder="Insurance Company Address"
-                  className="form-input"
-                />
-                {errors.insurance_company_address &&
-                  touched.insurance_company_address && (
-                    <span className="form-error">
-                      {errors.insurance_company_address}
-                    </span>
-                  )}
-                <span className="absolute inset-y-5 right-0 flex items-center mr-6 w-4 h-4">
-                  <Image
-                    src="/assets/icons/addressicon.svg"
-                    alt="address icon"
-                    width={30}
-                    height={30}
-                  />
-                </span>
-              </div>
-              <div className="relative">
-                <input
-                  type="text"
-                  id="drop_off_address"
-                  name="drop_off_address"
-                  value={values.drop_off_address}
-                  onChange={handleChange}
-                  placeholder="Drop Off Address"
-                  className="form-input"
-                />
+              </Field>
 
-                {errors.drop_off_address && touched.drop_off_address && (
-                  <span className="form-error">{errors.drop_off_address}</span>
+              <Field name="email">
+                {({ field, meta }) => (
+                  <div className="form-control relative">
+                    <label htmlFor="email"></label>
+                    <input
+                      {...field}
+                      placeholder="Customer Email"
+                      id="email"
+                      className="form-input"
+                      role="presentation"
+                      autoComplete="off" // this will block the browser autocomplete which causes a white background on the form field after the user selects an entry from the autocomplete options
+                    />
+                    {meta.error && meta.touched && (
+                      <span className="form-error">{meta.error}</span>
+                    )}
+                    <span className="icon-form-image">
+                      <Image
+                        src="/assets/icons/emailicon.svg"
+                        alt="email icon"
+                        width={30}
+                        height={30}
+                      />
+                    </span>
+                  </div>
                 )}
-                <span className="absolute inset-y-5 right-0 flex items-center mr-6 w-4 h-4">
-                  <Image
-                    src="/assets/icons/addressicon.svg"
-                    alt="address icon"
-                    width={30}
-                    height={30}
-                  />
-                </span>
-              </div>
-              <div className="relative">
-                <input
-                  type="tel"
-                  id="insurance_company_phone"
-                  name="insurance_company_phone"
-                  value={values.insurance_company_phone}
-                  onChange={handleChange}
-                  placeholder="Insurance Company Phone Number"
-                  className="form-input"
-                />
-                {errors.insurance_company_phone &&
-                  touched.insurance_company_phone && (
-                    <span className="form-error">
-                      {errors.insurance_company_phone}
+              </Field>
+
+              <Field name="customer_name">
+                {({ field, meta }) => (
+                  <div className="form-control relative">
+                    <label htmlFor="customer_name"></label>
+                    <input
+                      {...field}
+                      placeholder="Customer Name"
+                      id="customer_name"
+                      className="form-input"
+                      autoComplete="off"
+                    />
+                    {meta.error && meta.touched && (
+                      <span className="form-error">{meta.error}</span>
+                    )}
+                    <span className="icon-form-image">
+                      <Image
+                        src="/assets/icons/usericon.svg"
+                        alt="user icon"
+                        width={30}
+                        height={30}
+                      />
                     </span>
-                  )}
-                <span className="absolute inset-y-5 right-0 flex items-center mr-6 w-4 h-4">
-                  <Image
-                    src="/assets/icons/phoneicon.svg"
-                    alt="phone icon"
-                    width={30}
-                    height={30}
-                  />
-                </span>
-              </div>
-              <div className="relative">
-                <input
-                  type="tel"
-                  id="customer_phone_number"
-                  name="customer_phone_number"
-                  value={values.customer_phone_number}
-                  onChange={handleChange}
-                  placeholder="Customer Phone Number"
-                  className="form-input"
-                />
-                {errors.customer_phone_number &&
-                  touched.customer_phone_number && (
-                    <span className="form-error">
-                      {errors.customer_phone_number}
+                  </div>
+                )}
+              </Field>
+
+              <Field name="insurance_company_name">
+                {({ field, meta }) => (
+                  <div className="form-control relative">
+                    <label htmlFor="insurance_company_name"></label>
+                    <input
+                      {...field}
+                      placeholder="Insurance Company Name"
+                      id="insurance_company_name"
+                      className="form-input"
+                      autoComplete="off"
+                    />
+                    {meta.error && meta.touched && (
+                      <span className="form-error">{meta.error}</span>
+                    )}
+                    <span className="icon-form-image">
+                      <Image
+                        src="/assets/icons/officeicon.svg"
+                        alt="office icon"
+                        width={30}
+                        height={30}
+                      />
                     </span>
-                  )}
-                <span className="absolute inset-y-5 right-0 flex items-center mr-6 w-4 h-4">
-                  <Image
-                    src="/assets/icons/phoneicon.svg"
-                    alt="phone icon"
-                    width={30}
-                    height={30}
-                  />
-                </span>
-              </div>
-              <div className="pl-8">
-                <input
-                  id="return_agreement"
-                  name="return_agreement"
-                  type="checkbox"
-                  value={values.return_agreement}
-                  onChange={handleChange}
-                  className="accent-[#14968F] hover:cursor-pointer"
-                />
-                <label
-                  htmlFor="return_agreement"
-                  className="inline-block pl-[0.5rem] hover:cursor-pointer bordered-checkbox-[#14968F] text-xs"
-                >
-                  I agree to be{' '}
-                  <span className="text-primary-orange">
-                    returned back to pickup address
-                  </span>
-                </label>
-                <div>
-                  {errors.return_agreement && touched.return_agreement && (
-                    <span className="form-error">
-                      {errors.return_agreement}
+                  </div>
+                )}
+              </Field>
+
+              <Field name="pickup_address">
+                {({ field, meta }) => (
+                  <div className="form-control relative">
+                    <label htmlFor="pickup_address"></label>
+                    <AddressAutofill
+                      theme={{
+                        variables: {
+                          fontFamily: 'Avenir, sans-serif',
+                          colorBackground: '#303030',
+                          colorText: '#FFF5E1',
+                          colorBackgroundHover: '#14968F',
+                          border: '#FFF5E1',
+                        },
+                      }}
+                      accessToken={MAPBOX_ACCESS_TOKEN}
+                    >
+                      <input
+                        {...field}
+                        placeholder="Pickup Address"
+                        id="pickup_address"
+                        className="form-input"
+                        autoComplete="street-address"
+                      />
+                    </AddressAutofill>
+
+                    {meta.error && meta.touched && (
+                      <span className="form-error">{meta.error}</span>
+                    )}
+                    <span className="icon-form-image">
+                      <Image
+                        src="/assets/icons/addressicon.svg"
+                        alt="address icon"
+                        width={30}
+                        height={30}
+                      />
                     </span>
-                  )}
-                </div>
-              </div>
+                  </div>
+                )}
+              </Field>
+
+              <Field name="insurance_member_id">
+                {({ field, meta }) => (
+                  <div className="form-control relative">
+                    <label htmlFor="insurance_member_id"></label>
+                    <input
+                      {...field}
+                      placeholder="Insurance Member ID #"
+                      id="insurance_member_id"
+                      className="form-input"
+                      autoComplete="off"
+                    />
+                    {meta.error && meta.touched && (
+                      <span className="form-error">{meta.error}</span>
+                    )}
+                    <span className="icon-form-image">
+                      <Image
+                        src="/assets/icons/hashicon.svg"
+                        alt="hash icon"
+                        width={30}
+                        height={30}
+                      />
+                    </span>
+                  </div>
+                )}
+              </Field>
+
+              <Field name="insurance_company_address">
+                {({ field, meta }) => (
+                  <div className="form-control relative">
+                    <label htmlFor="insurance_company_address"></label>
+                    <AddressAutofill
+                      theme={{
+                        variables: {
+                          fontFamily: 'Avenir, sans-serif',
+                          colorBackground: '#303030',
+                          colorText: '#FFF5E1',
+                          colorBackgroundHover: '#14968F',
+                          border: '#FFF5E1',
+                        },
+                      }}
+                      accessToken={MAPBOX_ACCESS_TOKEN}
+                    >
+                      <input
+                        {...field}
+                        placeholder="Insurance Company Address"
+                        id="insurance_company_address"
+                        className="form-input"
+                        autoComplete="street-address"
+                      />
+                    </AddressAutofill>
+
+                    {meta.error && meta.touched && (
+                      <span className="form-error">{meta.error}</span>
+                    )}
+                    <span className="icon-form-image">
+                      <Image
+                        src="/assets/icons/addressicon.svg"
+                        alt="address icon"
+                        width={30}
+                        height={30}
+                      />
+                    </span>
+                  </div>
+                )}
+              </Field>
+
+              <Field name="drop_off_address">
+                {({ field, meta }) => (
+                  <div className="form-control relative">
+                    <label htmlFor="drop_off_address"></label>
+                    <AddressAutofill
+                      theme={{
+                        variables: {
+                          fontFamily: 'Avenir, sans-serif',
+                          colorBackground: '#303030',
+                          colorText: '#FFF5E1',
+                          colorBackgroundHover: '#14968F',
+                          border: '#FFF5E1',
+                        },
+                      }}
+                      accessToken={MAPBOX_ACCESS_TOKEN}
+                    >
+                      <input
+                        {...field}
+                        placeholder="Dropoff Address"
+                        id="drop_off_address"
+                        className="form-input"
+                        autoComplete="street-address"
+                      />
+                    </AddressAutofill>
+
+                    {meta.error && meta.touched && (
+                      <span className="form-error">{meta.error}</span>
+                    )}
+                    <span className="icon-form-image">
+                      <Image
+                        src="/assets/icons/addressicon.svg"
+                        alt="address icon"
+                        width={30}
+                        height={30}
+                      />
+                    </span>
+                  </div>
+                )}
+              </Field>
+
+              <Field name="customer_phone_number">
+                {({ field, meta }) => (
+                  <div className="form-control relative">
+                    <label htmlFor="customer_phone_number"></label>
+                    <input
+                      {...field}
+                      type="tel"
+                      placeholder="Customer Phone Number"
+                      id="customer_phone_number"
+                      className="form-input"
+                      autoComplete="off"
+                    />
+                    {meta.error && meta.touched && (
+                      <span className="form-error">{meta.error}</span>
+                    )}
+                    <span className="icon-form-image">
+                      <Image
+                        src="/assets/icons/phoneicon.svg"
+                        alt="phone icon"
+                        width={30}
+                        height={30}
+                      />
+                    </span>
+                  </div>
+                )}
+              </Field>
+
+              <Field name="insurance_company_phone">
+                {({ field, meta }) => (
+                  <div className="form-control relative">
+                    <label htmlFor="insurance_company_phone"></label>
+                    <input
+                      {...field}
+                      type="tel"
+                      placeholder="Insurance Company Phone"
+                      id="insurance_company_phone"
+                      className="form-input"
+                      autoComplete="off"
+                    />
+                    {meta.error && meta.touched && (
+                      <span className="form-error">{meta.error}</span>
+                    )}
+                    <span className="icon-form-image">
+                      <Image
+                        src="/assets/icons/phoneicon.svg"
+                        alt="phone icon"
+                        width={30}
+                        height={30}
+                      />
+                    </span>
+                  </div>
+                )}
+              </Field>
+
+              <Field name="return_agreement">
+                {({ field, meta }) => (
+                  <main className="form-control relative mt-4 md:ml-8 ml-4 flex-row justify-center col-span-2">
+                    <input
+                      {...field}
+                      type="checkbox"
+                      placeholder="Customer Phone Number"
+                      id="return_agreement"
+                      className="accent-[#14968F] hover:cursor-pointer"
+                    />
+                    <label
+                      htmlFor="return_agreement"
+                      className="md:inline-block pl-[0.5rem] hover:cursor-pointer bordered-checkbox-[#14968F] text-xs"
+                    >
+                      I agree to be{' '}
+                      <span className="text-primary-orange">
+                        returned back to pickup address
+                      </span>
+                    </label>
+                    {meta.error && meta.touched && (
+                      <span className="text-xs pl-2">{meta.error}</span>
+                    )}
+                  </main>
+                )}
+              </Field>
             </div>
+
             <button
               type="submit"
-              className="w-full bg-primary-orange rounded-full mt-8 p-2 text-lg"
+              className="submit-button w-full bg-primary-orange rounded-full mt-8 p-2 text-lg"
             >
               Book A Ride
             </button>
-          </form>
+          </Form>
         </Formik>
-
         <button
           onClick={() => closeModal(false)}
           className="text-[#636363] m-4 text-xs"
@@ -407,8 +498,8 @@ const Modal = ({ closeModal }) => {
           Cancel
         </button>
       </div>
-    </div>
+    </section>
   );
-};
+}
 
-export default Modal;
+export default BookingForm;
