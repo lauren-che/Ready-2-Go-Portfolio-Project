@@ -1,6 +1,6 @@
 'use client';
 
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useState, useRef } from 'react';
 import { Field, Form, Formik } from 'formik';
 import Image from 'next/image';
 import * as Yup from 'yup';
@@ -11,7 +11,6 @@ import { AddressAutofill } from '@mapbox/search-js-react';
 import MAPBOX_ACCESS_TOKEN from '@src/lib/mapbox';
 
 function BookingForm({ closeModal }) {
-
   // default form values
   const defaultBooking = {
     pickup_date: '',
@@ -100,7 +99,11 @@ function BookingForm({ closeModal }) {
       if (error) {
         throw error;
       }
-      setFeedback(<span className='text-primary-orange'>'Your ride has been booked successfully'</span>);
+      setFeedback(
+        <span className="text-primary-orange">
+          'Your ride has been booked successfully'
+        </span>
+      );
       // reset the form once submitted successfully
       resetForm();
     } catch (error) {
@@ -117,7 +120,7 @@ function BookingForm({ closeModal }) {
 
   return (
     <section
-      className="flex fixed justify-center items-center w-[100vw] h-[100vh] p-6 mx-auto"
+      className="flex fixed justify-center items-center w-[100vw] h-[100vh] p-6 mx-auto z-50"
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
     >
       <div className="p-8 flex flex-col w-[800px] bg-primary-black shadow-xl text-primary-white border-primary-white border-[0.1rem] rounded-[1rem]">
@@ -281,7 +284,7 @@ function BookingForm({ closeModal }) {
                       />
                     </AddressAutofill>
 
-                    {meta.error && meta.touched && (
+                    {meta.error && meta.touched && !address && (
                       <span className="form-error">{meta.error}</span>
                     )}
                     <span className="icon-form-image">

@@ -4,8 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { HashLink } from 'react-router-hash-link';
 import { useState } from 'react';
-// import Modal from '@components/Modal';
- import Modal from '@components/Form';
+import Modal from '@components/Modal';
+// import Modal from '@components/Form';
 
 const Nav = () => {
   const [state, setState] = useState(false);
@@ -63,7 +63,7 @@ const Nav = () => {
           </div>
         </div>
         <div
-          className={`flex-1 pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+          className={`scroll-smooth flex-1 pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
             state ? 'block' : 'hidden'
           }`}
         >
@@ -72,19 +72,19 @@ const Nav = () => {
               <Link href="/services">Services</Link>
             </li>
             <li className="hover:text-primary-orange cursor-pointer">
-              <Link href="#testimonials" scroll={true} className="block">
+              <Link href="#testimonials" smooth={true} className="block">
                 Testimonial
               </Link>
             </li>
 
             <li className="hover:text-primary-orange cursor-pointer">
-              <Link href="#about" scroll={true}>
+              <Link href="#about" smooth={true}>
                 About
               </Link>
             </li>
 
             <li className="hover:text-primary-orange cursor-pointer">
-              <Link href="#faq" scroll={true}>
+              <Link href="#faq" smooth={true}>
                 FAQ
               </Link>
             </li>

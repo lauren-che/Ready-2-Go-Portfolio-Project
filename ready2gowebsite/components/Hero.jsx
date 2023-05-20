@@ -1,10 +1,17 @@
+'use client';
+
+import Link from 'next/link';
 import Image from 'next/image';
+import Modal from '@components/Modal';
+import { useState } from 'react';
 
 const Hero = () => {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <section
       id="home"
-      className="flex md:pt-6 md:flex-row flex-col justify-items-center lg:pl-14 md:pb-28"
+      className="flex md:pt-6 md:flex-row flex-col justify-items-center lg:pl-14 md:pb-40"
     >
       <div className="flex-1 xl:ml-4 md:ml-8 md:mt-0 md:mr-0 md:mb-0 mx-8">
         <div>
@@ -57,14 +64,21 @@ const Hero = () => {
                 ></path>
               </svg>
             </span>
-            <button className="relative">Book A Ride</button>
+            <button
+              className="relative"
+              onClick={() => {
+                setOpenModal(true);
+              }}
+            >
+              Book A Ride
+            </button>
           </a>
           <a
             href="#services"
-            className="relative inline-flex items-center lg:px-12 md:px-5 px-28 md:py-3 py-2 overflow-hidden text-lg font-medium text-primary-black border-2 border-primary-black rounded-full hover:text-white group hover:bg-primary-black"
+            className="relative inline-flex items-center lg:px-12 md:px-5 px-28 md:py-3 py-2 overflow-hidden text-lg font-medium text-primary-black border-2 border-primary-black rounded-full hover:text-white group hover:bg-primary-black z-0"
           >
-            <span className="absolute left-0 block w-full h-0 transition-all bg-primary-black opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-            <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+            <span className="absolute left-0 block w-full h-0 transition-all bg-primary-black opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease z-0"></span>
+            <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease z-0">
               <svg
                 className="w-5 h-5"
                 fill="none"
@@ -80,7 +94,9 @@ const Hero = () => {
                 ></path>
               </svg>
             </span>
-            <span className="relative">Learn More</span>
+            <Link href="/services" className="relative">
+              Learn More
+            </Link>
           </a>
         </div>
       </div>
@@ -94,6 +110,7 @@ const Hero = () => {
           className="md:w-12/12 h-full md:object-cover object-top"
         />
       </div>
+      {openModal && <Modal closeModal={setOpenModal} />}
     </section>
   );
 };

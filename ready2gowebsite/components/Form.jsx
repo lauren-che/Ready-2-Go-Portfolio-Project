@@ -11,13 +11,6 @@ import { AddressAutofill } from '@mapbox/search-js-react';
 import MAPBOX_ACCESS_TOKEN from '@src/lib/mapbox';
 
 function BookingForm({ closeModal }) {
-  // mapbox hooks
-  // const [token, setToken] = useState('');
-  // useEffect(() => {
-  //   const accessToken = { MAPBOX_ACCESS_TOKEN };
-  //   setToken(accessToken);
-  //   config.accessToken = accessToken;
-  // }, []);
 
   // default form values
   const defaultBooking = {
@@ -128,7 +121,7 @@ function BookingForm({ closeModal }) {
 
   return (
     <section
-      className="flex fixed justify-center items-center w-[100vw] h-[100vh] p-6 mx-auto"
+      className="fixed inset-0 z-50 flex justify-center items-center w-[100vw] h-[90vh] p-6 mx-auto z-50"
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
     >
       <div className="p-8 flex flex-col w-[800px] bg-primary-black shadow-xl text-primary-white border-primary-white border-[0.1rem] rounded-[1rem]">
@@ -272,6 +265,7 @@ function BookingForm({ closeModal }) {
                   <div className="form-control relative">
                     <label htmlFor="pickup_address"></label>
                     <AddressAutofill
+                      options={searchOptions}
                       theme={{
                         variables: {
                           fontFamily: 'Avenir, sans-serif',

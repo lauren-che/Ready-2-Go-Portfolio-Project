@@ -3,7 +3,7 @@ import Image from 'next/image';
 const HomeServices = () => {
   return (
     <div>
-      <div className="relative text-center justify-center mx-12">
+      <div className="relative text-center justify-center mx-12 mt-6">
         <Image
           src="/assets/images/homeService.svg"
           alt="folder image"
