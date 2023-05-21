@@ -1,7 +1,13 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import { CheckIcon } from '@heroicons/react/20/solid';
+import Modal from '@components/Modal';
 
 const ServiceBenefits = () => {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <div>
       {/* Our Benefits Section */}
@@ -170,8 +176,10 @@ const ServiceBenefits = () => {
             </p>
           </div>
           <div className="lg:ml-20 md:ml-6">
-            <a
-              href="#"
+            <button
+              onClick={() => {
+                setOpenModal(true);
+              }}
               className="relative inline-flex left-0 block md:flex-col xl:px-12 lg:px-8 md:px-5 px-20 lg:py-16 md:py-20 py-2 mt-4 text-center overflow-hidden text-lg font-medium text-primary-white border-2 border-primary-orange rounded-lg group hover:bg-primary-orange hover:translate-y-3 transition duration-150 ease-out hover:ease-in flex-row-reverse md:items-center"
             >
               <Image
@@ -184,7 +192,7 @@ const ServiceBenefits = () => {
               <span className="relative md:text-2xl text-xl w-full">
                 Book A Ride
               </span>
-            </a>
+            </button>
           </div>
 
           {/* second row or 3 tier information */}
@@ -284,7 +292,7 @@ const ServiceBenefits = () => {
                   transportation services.
                 </p>
               </div>
-              <a
+              {/* <a
                 href="#"
                 className="relative inline-flex items-center mt-8 lg:px-12 md:px-16 px-28 md:py-3 py-2 overflow-hidden text-lg font-medium text-primary-white border-primary-orange border-2 rounded-full hover:text-primary-orange group hover:bg-primary-orange bg-primary-orange hover:border-primary-white"
               >
@@ -306,7 +314,7 @@ const ServiceBenefits = () => {
                   </svg>
                 </span>
                 <span className="relative">Learn More</span>
-              </a>
+              </a> */}
             </div>
             <div className="mt-12">
               <Image
@@ -314,12 +322,13 @@ const ServiceBenefits = () => {
                 alt="safety icons"
                 width={50}
                 height={50}
-                className="w-full lg:w-5/6 md:w-3/5 xl:ml-8"
+                className="w-full lg:w-2/3 md:w-3/5 xl:ml-8"
               />
             </div>
           </div>
         </div>
       </div>
+      {openModal && <Modal closeModal={setOpenModal} />}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import Image from 'next/image';
 const ServiceHeader = () => {
   return (
     <div>
-      <div className="mx-auto w-full text-center place-items-center relative flex-grow">
+      <div className="mx-auto w-full text-center place-items-center  flex-grow">
         <Image
           src="/assets/images/servicesheader.svg"
           alt="services header image"
@@ -14,7 +14,7 @@ const ServiceHeader = () => {
         <h2 className="lg:text-2xl font-semibold leading-7 uppercase tracking-widest absolute z-999 text-primary-white xl:top-96 lg:top-80 md:top-56 top-32 left-1/2 -translate-x-1/2 -translate-y-1/2">
           our services
         </h2>
-        <h5 className="w-5/6 font-semibold text-primary-white xl:text-6xl lg:text-5xl md:text-4xl text-xl items-center absolute z-999 xl:top-64 lg:top-80 md:top-32 top-2 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-tight">
+        <h5 className="w-5/6 font-semibold text-primary-white xl:text-7xl lg:text-5xl md:text-4xl text-xl items-center absolute z-999 xl:top-64 lg:top-80 md:top-32 top-2 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-tight">
           Comfortable Rides for Medical Appointments and Beyond
         </h5>
       </div>

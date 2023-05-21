@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 
 @tailwind base;
+html {
+  scroll-behavior: smooth;
+}
 @tailwind components;
 @tailwind utilities;
 
@@ -10,9 +13,6 @@ body {
   @apply box-border bg-primary-white text-primary-black;
 }
 @layer base {
-  html {
-    @apply scroll-smooth;
-  }
   h4 {
     @apply mt-16;
   }

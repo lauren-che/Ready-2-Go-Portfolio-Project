@@ -72,21 +72,19 @@ const Nav = () => {
               <Link href="/services">Services</Link>
             </li>
             <li className="hover:text-primary-orange cursor-pointer">
-              <Link href="#testimonials" className="block">
+              <Link href="#testimonials" className="block" scroll={false}>
                 Testimonials
               </Link>
             </li>
 
             <li className="hover:text-primary-orange cursor-pointer">
-              <Link href="#about">
+              <Link href="#about" scroll={false}>
                 About
               </Link>
             </li>
 
             <li className="hover:text-primary-orange cursor-pointer">
-              <Link href="/services/#faq">
-                FAQ
-              </Link>
+              <Link href="/services/#faq">FAQ</Link>
             </li>
             <div className="space-y-3 items-center gap-x-6 md:flex md:space-y-0">
               <li>

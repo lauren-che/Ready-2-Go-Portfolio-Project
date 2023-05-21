@@ -1,8 +1,6 @@
 import '@styles/globals.css';
 import Nav from '@components/Nav';
 import Footer from '@components/Footer';
-// import { Inter } from 'next/font/google'
-// const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Ready 2 Go Transportation',
