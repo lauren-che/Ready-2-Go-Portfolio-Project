@@ -6,13 +6,13 @@
 @tailwind utilities;
 
 /* Tailwind Styles */
-html {
-  @layer scroll-behavior: smooth;
-}
 body {
-  @apply box-border bg-[#FFF5E1] text-[#232323];
+  @apply box-border bg-primary-white text-primary-black;
 }
 @layer base {
+  html {
+    @apply scroll-smooth;
+  }
   h4 {
     @apply mt-16;
   }
@@ -46,4 +46,19 @@ body {
 }
 .home-service-text {
   @apply xl:text-xl lg:text-lg text-xs xl:w-56 lg:w-48 md:w-32 w-32 py-2;
+}
+.appointments-container {
+  @apply rounded-t-3xl bg-primary-black relative isolate overflow-hidden px-6 pt-24 pb-32 lg:overflow-visible lg:px-10
+}
+.appointments-sub-container {
+  @apply mx-auto grid max-w-2xl grid-cols-1 gap-x-8 md:gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-2
+}
+.appointments-box {
+  @apply lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8
+}
+.appointments-box2 {
+  @apply lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8
+}
+.social-trans-container {
+  @apply rounded-t-3xl bg-primary-teal relative isolate overflow-hidden -mt-16 px-12 pt-16 pb-32 lg:overflow-visible lg:px-10;
 }

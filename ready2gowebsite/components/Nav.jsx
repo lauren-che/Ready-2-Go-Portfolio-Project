@@ -72,19 +72,19 @@ const Nav = () => {
               <Link href="/services">Services</Link>
             </li>
             <li className="hover:text-primary-orange cursor-pointer">
-              <Link href="#testimonials" smooth={true} className="block">
-                Testimonial
+              <Link href="#testimonials" className="block">
+                Testimonials
               </Link>
             </li>
 
             <li className="hover:text-primary-orange cursor-pointer">
-              <Link href="#about" smooth={true}>
+              <Link href="#about">
                 About
               </Link>
             </li>
 
             <li className="hover:text-primary-orange cursor-pointer">
-              <Link href="#faq" smooth={true}>
+              <Link href="/services/#faq">
                 FAQ
               </Link>
             </li>
