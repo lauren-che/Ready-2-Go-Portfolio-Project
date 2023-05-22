@@ -1,8 +1,6 @@
 # Project Title: Ready 2 Go Transportation
 
-<img src='/ready2go/src/assets/cover.png' width=75%>
-
-## Project Description
+<img src='ready2gowebsite/public/assets/images/landingpage.png' width=75%>
 
 Ready 2 Go is a startup company in Cleveland, OH that offers rides to disabled and senior members of the community. The goal was to create a website where clients or their caregivers can book rides to accurate addresses within a 20 mile radius of downtown Cleveland. The client was also seeking a secure administrative dashboard to track bookings, payments and the ability to book rides for in-person clients.
 
