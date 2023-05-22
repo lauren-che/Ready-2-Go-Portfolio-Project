@@ -21,8 +21,8 @@ const Nav = () => {
               src="/assets/images/lightlogo.svg"
               alt="Ready 2 Go Logo"
               width={170}
-              height={150}
-              className="object-contain"
+              height={170}
+              className="object-contain h-[4rem] w-auto"
             />
           </Link>
           <div className="md:hidden">

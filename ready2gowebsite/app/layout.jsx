@@ -2,6 +2,7 @@ import '@styles/globals.css';
 import Nav from '@components/Nav';
 import Footer from '@components/Footer';
 
+
 export const metadata = {
   title: 'Ready 2 Go Transportation',
   description: "Safe, Reliable Transportation for Cleveland's Residents",
