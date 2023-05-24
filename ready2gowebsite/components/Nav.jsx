@@ -22,7 +22,7 @@ const Nav = () => {
               alt="Ready 2 Go Logo"
               width={170}
               height={170}
-              className="object-contain h-[4rem] w-auto"
+              className="object-contain h-[4rem] w-auto lg:pl-10 xl:pl-2"
             />
           </Link>
           <div className="md:hidden">

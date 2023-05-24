@@ -1,13 +1,7 @@
-'use client';
-
-import { useState } from 'react';
 import Image from 'next/image';
 import { CheckIcon } from '@heroicons/react/20/solid';
-import Modal from '@components/Modal';
 
 const ServiceBenefits = () => {
-  const [openModal, setOpenModal] = useState(false);
-
   return (
     <div>
       {/* Our Benefits Section */}
@@ -160,13 +154,13 @@ const ServiceBenefits = () => {
 
       {/* Vehicle Options Section */}
       <div className="rounded-t-3xl bg-primary-black relative isolate overflow-hidden -mt-16 px-6 md:pt-24 pt-8 pb-32 lg:overflow-visible lg:px-10">
-        <div className="grid md:grid-cols-3 grid-cols-1 py-12 px-6">
+        <div className="mx-auto max-w-4xl py-12 px-6 md:text-center">
           <div className="col-span-2">
-            <h1 className="xl:ml-10 my-2 text-3xl font-bold tracking-tight text-primary-white sm:text-4xl lg:leading-2">
+            <h1 className="my-2 md:text-5xl font-bold tracking-tight text-primary-white text-3xl lg:leading-2">
               We also offer a range of vehicle options to suit your specific
-              needs.
+              needs
             </h1>
-            <p className="py-4 xl:ml-10 lg:mr-20 text-primary-white leading-8">
+            <p className="py-4 text-primary-white leading-8 ">
               At Ready 2 Go Transportation, we are committed to providing
               inclusive transportation solutions for all members of our
               community. We understand that mobility can be a challenge for
@@ -175,7 +169,8 @@ const ServiceBenefits = () => {
               suit your specific needs.
             </p>
           </div>
-          <div className="lg:ml-20 md:ml-6">
+        </div>
+        {/* <div className="lg:ml-20 md:ml-6">
             <button
               onClick={() => {
                 setOpenModal(true);
@@ -193,10 +188,9 @@ const ServiceBenefits = () => {
                 Book A Ride
               </span>
             </button>
-          </div>
+          </div> */}
 
-          {/* second row or 3 tier information */}
-        </div>
+        {/* second row or 3 tier information */}
         <div className="container px-6 md:py-12 py-6 mx-auto lg:mt-6 text-primary-white">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <div>
@@ -205,7 +199,7 @@ const ServiceBenefits = () => {
                 alt="orange clock"
                 width={50}
                 height={50}
-                className="w-[4rem]"
+                className="w-[4rem] mx-auto"
               />
 
               <h1 className="mt-4 text-2xl font-semibold">
@@ -227,7 +221,7 @@ const ServiceBenefits = () => {
                 alt="orange credit card"
                 width={50}
                 height={50}
-                className="w-[4rem]"
+                className="w-[4rem] mx-auto"
               />
 
               <h1 className="mt-4 text-2xl font-semibold">
@@ -250,7 +244,7 @@ const ServiceBenefits = () => {
                 alt="price tag"
                 width={50}
                 height={50}
-                className="w-[4rem]"
+                className="w-[4rem] mx-auto"
               />
               <h1 className="mt-4 text-2xl font-semibold">
                 Customized Accessibility
@@ -328,7 +322,6 @@ const ServiceBenefits = () => {
           </div>
         </div>
       </div>
-      {openModal && <Modal closeModal={setOpenModal} />}
     </div>
   );
 };

@@ -11,9 +11,9 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="flex md:pt-6 md:flex-row flex-col justify-items-center lg:pl-14 md:pb-40"
+      className="flex md:pt-6 md:flex-row flex-col justify-items-center lg:pl-10 md:pb-40"
     >
-      <div className="flex-1 xl:ml-4 md:ml-8 md:mt-0 md:mr-0 md:mb-0 mx-8">
+      <div className="flex-1 xl:ml-4 lg:ml-8 md:mt-0 md:mr-0 md:mb-0 mx-8">
         <div>
           <h4 className="text-xs uppercase font-thin sm:py-5 py-2 md:py-2 xl:text-lg xl:py-3">
             cleveland&apos;s trusted transportation provider
@@ -43,7 +43,7 @@ const Hero = () => {
           </p>
         </div>
         <div className="md:mt-2 my-2">
-          <a
+          {/* <a
             href="#_"
             className="md:mr-2 my-2 relative inline-flex items-center lg:px-12 md:px-5 px-28 md:py-3 py-2 overflow-hidden text-lg font-medium text-white border-2 bg-primary-orange border-primary-orange rounded-full hover:text-white group hover:bg-primary-orange hover:border-primary-black"
           >
@@ -72,10 +72,10 @@ const Hero = () => {
             >
               Book A Ride
             </button>
-          </a>
+          </a> */}
           <a
             href="#services"
-            className="relative inline-flex items-center lg:px-12 md:px-5 px-28 md:py-3 py-2 overflow-hidden text-lg font-medium text-primary-black border-2 border-primary-black rounded-full hover:text-white group hover:bg-primary-black z-0"
+            className="relative inline-flex items-center lg:px-12 md:px-5 px-28 md:py-3 py-2 overflow-hidden text-lg font-medium text-primary-orange border-2 border-primary-orange rounded-full hover:border-primary-black hover:text-white group hover:bg-primary-black z-0"
           >
             <span className="absolute left-0 block w-full h-0 transition-all bg-primary-black opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease z-0"></span>
             <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease z-0">

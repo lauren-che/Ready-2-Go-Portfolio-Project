@@ -1,9 +1,10 @@
 import Image from 'next/image';
 
 const ServiceHeader = () => {
+
   return (
     <div>
-      <div className="mx-auto w-full text-center place-items-center  flex-grow">
+      <div className="mx-auto w-full text-center place-items-center flex-grow">
         <Image
           src="/assets/images/servicesheader.svg"
           alt="services header image"
@@ -68,9 +69,11 @@ const ServiceHeader = () => {
           </p>
         </div>
       </div>
-      <div className="hidden md:block absolute xl:top-[70rem] lg:top-[56rem] md:top-[42rem] md:mb-2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <a
-          href="#_"
+      {/* <div className="hidden md:block absolute xl:top-[70rem] lg:top-[56rem] md:top-[42rem] md:mb-2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <button
+          onClick={() => {
+            setOpenModal(true);
+          }}
           className="relative inline-flex items-center md:px-24 xl:py-3 md:py-2 py-2 overflow-hidden text-lg font-medium text-white border-2 bg-primary-orange border-primary-orange rounded-full hover:text-white group hover:bg-primary-orange hover:border-primary-white hover:border-2"
         >
           <span className="absolute left-0 block w-full h-0 transition-all bg-primary-black opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
@@ -91,8 +94,8 @@ const ServiceHeader = () => {
             </svg>
           </span>
           <span className="relative">Book A Ride</span>
-        </a>
-      </div>
+        </button>
+      </div> */}
     </div>
   );
 };
